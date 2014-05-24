@@ -1,0 +1,27 @@
+{
+	"name": "bellious",
+	"description": "social bucket list",
+  "version": "0.0.1",
+  "contributors": [
+    {
+      "name": "Holden Rehg",
+      "email": "holdenrehg@gmail.com",
+      "web": "http://holdenrehg.com/"
+    }
+  ],
+  "dependencies": {
+    "express": "3.x",
+    "pg": "~0.14.1",
+    "mongodb": "~1.2.14",
+    "static-favicon": "~1.0.0",
+    "morgan": "~1.0.0",
+    "cookie-parser": "~1.0.1",
+    "body-parser": "~1.0.0",
+    "debug": "~0.7.4",
+    "logfmt": "~0.21.0"
+  },
+  "devDependencies": {
+  	"mocha": "*",
+    "chai": "*"
+  }
+}
