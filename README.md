@@ -1,7 +1,15 @@
 qubo
+====
 
 tech
+----
 
-mongodb
-express
-backbone
++ mongodb
++ express
++ backbone
+
+structure
+---------
+
++ public
++ src
