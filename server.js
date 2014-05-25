@@ -1,15 +1,18 @@
-var express = require('express');
-var morgan = require('morgan');
-var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
-app = express();
+var express = require('express'),
+    morgan = require('morgan'),
+    bodyParser = require('body-parser'),
+    methodOverride = require('method-override'),
+    qubo = require('qubo'),
+    app = express();
 
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 app.use(bodyParser());
 app.use(methodOverride());
+module.exports = app;
 
-// define routes
-require('./src/routes');
+qubo.routes();
 
-app.listen(3000);
+app.listen(3000, function() {
+    console.log('\n--- Server is running on port 3000 ---\n');
+});

@@ -1,0 +1,18 @@
+{
+    "node": {
+        "src": "src",
+        "controllers": "src/controllers",
+        "models": "src/models",
+        "routes": "src/routes",
+        "util": "src/util"
+    },
+    "backbone": {
+        "src": "public/javascripts",
+        "collections": "public/javascripts/controllers",
+        "models": "public/javascripts/models",
+        "views": "public/javascripts/views"
+    },
+    "styles": "public/stylesheets",
+    "images": "public/images",
+    "app": "server" 
+}

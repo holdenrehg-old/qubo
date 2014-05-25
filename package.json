@@ -1,23 +1,21 @@
 {
-  "name": "bellious",
-  "description": "social bucket list",
-  "version": "0.0.1",
-  "contributors": [
-    {
-      "name": "Holden Rehg",
-      "email": "holdenrehg@gmail.com",
-      "web": "http://holdenrehg.com/"
+    "name": "bellious",
+    "description": "social bucket list",
+    "version": "0.0.1",
+    "contributors": [{
+        "name": "Holden Rehg",
+        "email": "holdenrehg@gmail.com",
+        "web": "http://holdenrehg.com/"
+    }],
+    "dependencies": {
+        "express": "4.x",
+        "mongodb": "1.4.*",
+        "morgan": "~1.0.0",
+        "body-parser": "~1.0.0",
+        "method-override": "~1.0.0"
+    },
+    "devDependencies": {
+        "mocha": "*",
+        "chai": "*"
     }
-  ],
-  "dependencies": {
-    "express": "4.x",
-    "mongodb": "1.4.*",
-    "morgan": "~1.0.0",
-    "body-parser": "~1.0.0",
-    "method-override": "~1.0.0"
-  },
-  "devDependencies": {
-  	"mocha": "*",
-    "chai": "*"
-  }
 }

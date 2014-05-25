@@ -1,14 +1,14 @@
 {
-	"name": "bellious",
-  "version": "0.0.1",
-  "dependencies": {
-    "backbone": "latest",
-    "requirejs": "latest",
-    "jquery": "latest",
-    "underscore": "latest",
-    "marionette": "latest",
-    "bootstrap": "latest",
-    "fontawesome": "latest",
-    "modernizr": "latest"
-  }
+    "name": "bellious",
+    "version": "0.0.1",
+    "dependencies": {
+        "backbone": "latest",
+        "requirejs": "latest",
+        "jquery": "latest",
+        "underscore": "latest",
+        "marionette": "latest",
+        "bootstrap": "latest",
+        "fontawesome": "latest",
+        "modernizr": "latest"
+    }
 }
