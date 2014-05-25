@@ -10,15 +10,11 @@
     }
   ],
   "dependencies": {
-    "express": "3.x",
-    "pg": "~0.14.1",
-    "mongodb": "~1.2.14",
-    "static-favicon": "~1.0.0",
+    "express": "4.x",
+    "mongodb": "1.4.*",
     "morgan": "~1.0.0",
-    "cookie-parser": "~1.0.1",
     "body-parser": "~1.0.0",
-    "debug": "~0.7.4",
-    "logfmt": "~0.21.0"
+    "method-override": "~1.0.0"
   },
   "devDependencies": {
   	"mocha": "*",

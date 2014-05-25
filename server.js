@@ -1,36 +1,15 @@
-// dependencies
-var express = require('express');
-var logfmt = require('logfmt');
-var http = require('http');
-var path = require('path');
+var express 				= require('express');
+var morgan					= require('morgan');
+var bodyParser 			= require('body-parser');
+var methodOverride	= require('method-override');
+app 								= express();
 
-app = express();
-
-app.use(logfmt.requestLogger());
-
-// all environments
-app.set('port', process.env.PORT || 3000);
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(express.methodOverride());
-app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
-
-// development only
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
-}
+app.use(express.static(__dirname + '/public'));
+app.use(morgan('dev'));
+app.use(bodyParser());
+app.use(methodOverride());
 
 // define routes
 require('./src/routes');
 
-// undefined route
-app.use(function(req, res){
-	res.sendfile('./public/index.html');	
-});
-
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
-});
+app.listen(3000);
