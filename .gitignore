@@ -1,5 +1,5 @@
 node_modules/*
-!node_module/qubo
+!/node_module/qubo
 bower_components
 public/vendor
 test
