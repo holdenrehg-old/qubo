@@ -1,8 +1,8 @@
-var express 				= require('express');
-var morgan					= require('morgan');
-var bodyParser 			= require('body-parser');
-var methodOverride	= require('method-override');
-app 								= express();
+var express = require('express');
+var morgan = require('morgan');
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+app = express();
 
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
