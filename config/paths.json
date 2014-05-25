@@ -14,5 +14,5 @@
     },
     "styles": "public/stylesheets",
     "images": "public/images",
-    "app": "server" 
+    "app": "server"
 }

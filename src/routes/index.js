@@ -1,5 +1,5 @@
 var qubo = require('qubo'),
     app = qubo.app();
 
-require('./test')(app);
+require('./user')(app);
 require('./undefined')(app);

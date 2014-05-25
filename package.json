@@ -9,7 +9,8 @@
     }],
     "dependencies": {
         "express": "4.x",
-        "mongodb": "1.4.*",
+        "mongodb": "*",
+        "monk": "*",
         "morgan": "~1.0.0",
         "body-parser": "~1.0.0",
         "method-override": "~1.0.0"
