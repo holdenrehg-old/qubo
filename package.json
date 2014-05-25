@@ -1,5 +1,5 @@
 {
-    "name": "bellious",
+    "name": "qubo",
     "description": "social bucket list",
     "version": "0.0.1",
     "contributors": [{
@@ -7,16 +7,31 @@
         "email": "holdenrehg@gmail.com",
         "web": "http://holdenrehg.com/"
     }],
+    "repository": {
+        "type": "git",
+        "url": "http://github.com/holdenrehg/qubo.git"
+    },
     "dependencies": {
         "express": "4.x",
-        "mongodb": "*",
-        "monk": "*",
+        "mongodb": "0.1.*",
+        "monk": "0.*",
         "morgan": "~1.0.0",
         "body-parser": "~1.0.0",
-        "method-override": "~1.0.0"
+        "method-override": "~1.0.0",
+        "handlebars": "~1.3.0",
+        "hbsfy": "~1.3.2",
+        "backbone": "1.1.*",
+        "jquery": "2.*",
+        "underscore": "1.6.*",
+        "font-awesome": "4.0.3",
+        "backbone.marionette": "1.8.6"
     },
     "devDependencies": {
         "mocha": "*",
-        "chai": "*"
+        "chai": "*",
+        "execSync": "*",
+        "grunt": "~0.4.5",
+        "grunt-contrib-jshint": "~0.10.0",
+        "grunt-contrib-uglify": "~0.4.0"
     }
 }

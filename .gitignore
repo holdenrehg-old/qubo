@@ -1,6 +1,15 @@
+# vendor components
+
 node_modules/*
 !/node_modules/qubo
 bower_components
 public/vendor
+
+# dev tools
+
 test
 bin
+
+# app build 
+
+build
