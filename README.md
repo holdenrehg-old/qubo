@@ -5,26 +5,26 @@ qubo
 
 ### dev
 
-+ [http://expressjs.com/](express)
-+ [http://backbonejs.org/](backbone)
-+ [http://www.mongodb.org/](mongodb)
-+ [http://underscorejs.org/](underscore)
-+ [http://handlebarsjs.com/](handlebars)
++ [express](http://expressjs.com/)
++ [backbone](http://backbonejs.org/)
++ [mongodb](http://www.mongodb.org/)
++ [underscore](http://underscorejs.org/)
++ [handlebars](http://handlebarsjs.com/)
 
 ### tools
 
-+ [http://browserify.org](browserify)
-+ [https://github.com/substack/watchify](watchify)
-+ [https://github.com/remy/nodemon](nodemon)
-+ [http://gruntjs.com](grunt)
-+ [http://jshint.com](jshint)
-+ [http://visionmedia.github.io/mocha/](mocha)
-+ [http://zombie.labnotes.org/](zombie)
++ [browserify](http://browserify.org)
++ [watchify](https://github.com/substack/watchify)
++ [nodemon](https://github.com/remy/nodemon)
++ [grunt](http://gruntjs.com)
++ [jshint](http://jshint.com)
++ [mocha](http://visionmedia.github.io/mocha/)
++ [zombie](http://zombie.labnotes.org/)
 
 ### style
 
-+ [http://fortawesome.github.io/Font-Awesome/](font awesome)
-+ [http://sass-lang.com/](sass)
++ [font-awesome](http://fortawesome.github.io/Font-Awesome/)
++ [sass](http://sass-lang.com/)
 
 structure
 ---------
