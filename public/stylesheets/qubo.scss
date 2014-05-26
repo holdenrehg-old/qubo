@@ -1,0 +1,22 @@
+body {
+    padding: 50px;
+    font: 14px"Lucida Grande", Helvetica, Arial, sans-serif;
+    a {
+        color: #00B7FF;
+    }
+    .pure-g {
+        height: 50px;
+    }
+    [class*="pure-u-"] {
+        height:50px;
+    }
+    .blue {
+        background: blue;
+    }
+    .yellow {
+        background: yellow;
+    }
+    .green {
+        background: green;
+    }
+}

@@ -13,7 +13,7 @@ module.exports = function(grunt) {
             }
         },
         jshint: {
-        	all: ['Gruntfile.js', 'test/**/*.js', 'src/**/*.js', 'public/javascripts/**/*.js', '!public/javascripts/bundle.js']
+            all: ['Gruntfile.js', 'test/**/*.js', 'src/**/*.js', 'public/javascripts/**/*.js', '!public/javascripts/bundle.js']
         }
     });
 
@@ -32,8 +32,9 @@ module.exports = function(grunt) {
         sh.run('npm ' + action);
         sh.run('bower ' + action);
     });
-    grunt.registerTask('server', 'Start watchify and nodemon', function() {
-        sh.run('watchify public/javascripts/bootstrap.js -o public/javascripts/bundle.js &');
+    grunt.registerTask('server', 'Start watchify, sass watch, and nodemon', function() {
+        sh.run('watchify -t hbsfy public/javascripts/bootstrap.js -o public/javascripts/bundle.js &');
+        sh.run('sass --watch public/stylesheets &');
         sh.run('nodemon server');
     });
 };

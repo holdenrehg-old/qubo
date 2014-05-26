@@ -5,9 +5,9 @@ qubo
 
 ### dev
 
-+ mongodb
 + express
 + backbone
++ mongodb
 + underscore
 + handlebars
 
@@ -22,6 +22,7 @@ qubo
 ### style
 
 + font awesome
++ scss
 
 structure
 ---------
