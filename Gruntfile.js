@@ -14,15 +14,30 @@ module.exports = function(grunt) {
         },
         jshint: {
             all: ['Gruntfile.js', 'test/**/*.js', 'src/**/*.js', 'public/javascripts/**/*.js', '!public/javascripts/bundle.js']
+        },
+        mochaTest: {
+            test: {
+                src: ['test/**/*.js'],
+                options: {
+                    reporter: 'spec'
+                }
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-mocha-test');
 
     grunt.registerTask('default', ['server']);
     grunt.registerTask('build', ['vendor:install', 'vendor:update']);
-    grunt.registerTask('test', ['jshint']);
+    grunt.registerTask('test', ['jshint', 'mochaTest']);
+
+    grunt.registerTask('server', 'Start watchify, sass watch, and nodemon', function() {
+        sh.run('watchify -t hbsfy public/javascripts/bootstrap.js -o public/javascripts/bundle.js &');
+        sh.run('sass --watch public/stylesheets &');
+        sh.run('nodemon server');
+    });
     grunt.registerTask('vendor', 'Perform task on dependencies', function(action) {
         if (action === undefined) {
             grunt.log.error('Please provide argument to vendor task');
@@ -31,10 +46,5 @@ module.exports = function(grunt) {
 
         sh.run('npm ' + action);
         sh.run('bower ' + action);
-    });
-    grunt.registerTask('server', 'Start watchify, sass watch, and nodemon', function() {
-        sh.run('watchify -t hbsfy public/javascripts/bootstrap.js -o public/javascripts/bundle.js &');
-        sh.run('sass --watch public/stylesheets &');
-        sh.run('nodemon server');
     });
 };

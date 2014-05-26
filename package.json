@@ -1,5 +1,6 @@
 {
     "name": "qubo",
+    "title": "Qubo",
     "description": "social bucket list",
     "version": "0.0.1",
     "contributors": [{
@@ -28,10 +29,11 @@
     },
     "devDependencies": {
         "mocha": "*",
-        "chai": "*",
+        "zombie": "*",
         "execSync": "*",
         "grunt": "~0.4.5",
         "grunt-contrib-jshint": "~0.10.0",
-        "grunt-contrib-uglify": "~0.4.0"
+        "grunt-contrib-uglify": "~0.4.0",
+        "grunt-mocha-test": "~0.*"
     }
 }

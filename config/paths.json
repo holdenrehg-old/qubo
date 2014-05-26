@@ -14,5 +14,6 @@
     },
     "styles": "public/stylesheets",
     "images": "public/images",
+    "pkg": "package.json",
     "app": "server"
 }
