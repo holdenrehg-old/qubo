@@ -49,10 +49,12 @@ qubo
 
 ### user
 
-	`GET` /api/user
-	`POST` /api/user
+`GET` /api/user
+
+`POST` /api/user
 
 ### todo
 
-	`GET` /api/todo
-	`POST` /api/todo		
+`GET` /api/todo
+
+`POST` /api/todo		
