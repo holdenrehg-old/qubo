@@ -4,6 +4,7 @@ node_modules/*
 !/node_modules/qubo
 bower_components
 public/vendor
+.sass-cache
 
 # dev tools
 

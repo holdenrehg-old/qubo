@@ -7,9 +7,3 @@ body {
     height: 50px; }
   body [class*="pure-u-"] {
     height: 50px; }
-  body .blue {
-    background: blue; }
-  body .yellow {
-    background: yellow; }
-  body .green {
-    background: green; }
