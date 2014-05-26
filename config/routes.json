@@ -1,0 +1,14 @@
+{
+	"/api/user": {
+		"controller": "user",
+		"verbs": [
+			"get"
+		]
+	},
+	"/api/todo": {
+		"controller": "todo",
+		"verbs": [
+			"get"
+		]
+	}
+}

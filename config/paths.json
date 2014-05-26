@@ -3,7 +3,7 @@
         "src": "src",
         "controllers": "src/controllers",
         "models": "src/models",
-        "routes": "src/routes",
+        "routes": "config/routes.json",
         "util": "src/util"
     },
     "backbone": {
