@@ -1,19 +1,19 @@
 var qubo = require('qubo'),
     app = qubo.app(),
     controllers = {},
-    JSON = {
+    Json = {
         /**
          * Generate express routes from a {}
          */
         routes: function(routes) {
             Object.keys(routes).forEach(function(route, index) {
-                JSON.makeRoute(route, routes[route]);
+                Json.makeRoute(routes[route]);
             });
         },
-        makeRoute: function(route, data) {
-            var controller = JSON.loadController(data.controller);
+        makeRoute: function(data) {
+            var controller = Json.loadController(data.controller);
             data.verbs.forEach(function(verb, index) {
-                app[verb](route, controller[verb]);
+                app[verb](data.url, controller[verb]);
             });
         },
         loadController: function(name) {
@@ -24,4 +24,4 @@ var qubo = require('qubo'),
         }
     };
 
-module.exports = JSON;
+module.exports = Json;

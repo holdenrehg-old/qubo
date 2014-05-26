@@ -1,0 +1,9 @@
+{
+	"protocol": "http",
+	"url": "localhost",
+	"port": "3000",
+	"fullUrl": "http://localhost:3000",
+
+	"name": "qubo",
+	"title": "Qubo"
+}

@@ -15,5 +15,6 @@
     "styles": "public/stylesheets",
     "images": "public/images",
     "pkg": "package.json",
+    "appConfig": "config/app.json",
     "app": "server"
 }

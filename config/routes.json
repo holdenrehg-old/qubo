@@ -1,11 +1,13 @@
 {
-	"/api/user": {
+	"user": {
+		"url": "/api/user",
 		"controller": "user",
 		"verbs": [
 			"get"
 		]
 	},
-	"/api/todo": {
+	"todo": {
+		"url": "/api/todo",
 		"controller": "todo",
 		"verbs": [
 			"get"
