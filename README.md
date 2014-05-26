@@ -26,8 +26,7 @@ qubo
 + [font-awesome](http://fortawesome.github.io/Font-Awesome/)
 + [sass](http://sass-lang.com/)
 
-structure
----------
+## structure
 
 + config
 + public
@@ -45,3 +44,15 @@ structure
 	+ models
 	+ util
 + test
+
+## api
+
+### user
+
+	`GET` /api/user
+	`POST` /api/user
+
+### todo
+
+	`GET` /api/todo
+	`POST` /api/todo		
