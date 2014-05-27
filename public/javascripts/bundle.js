@@ -12629,20 +12629,26 @@ var $ = Backbone.$ = require('jquery');
 var Router = require('./router.js');
 
 new Router();
-Backbone.history.start({
+var found = Backbone.history.start({
     pushState: true
 });
 
-},{"./router.js":13,"backbone":1,"jquery":10}],13:[function(require,module,exports){
+if (!found) {
+	$('body').html(require('./views/templates/notFound.hbs')());
+};
+
+},{"./router.js":13,"./views/templates/notFound.hbs":15,"backbone":1,"jquery":10}],13:[function(require,module,exports){
 var Backbone = require('backbone'),
     $ = Backbone.$ = require('jquery'),
     indexView = require('./views/templates/index.hbs'),
-    testingView = require('./views/templates/testing.hbs');
+    testingView = require('./views/templates/testing.hbs'),
+    notFound = require('./views/templates/notFound.hbs');
 
 module.exports = Backbone.Router.extend({
     routes: {
         '': 'index',
-        'testing': 'testing'
+        'testing': 'testing',
+        '*notFound': 'notFound'
     },
     index: function() {
         $('body').html(indexView({name: "Holden"}));
@@ -12651,10 +12657,14 @@ module.exports = Backbone.Router.extend({
     testing: function() {
         $('body').html(testingView());
         console.log('initializing testing route');
+    },
+    notFound: function() {
+        console.log('route not found');
+        $('body').html(notFound());
     }
 });
 
-},{"./views/templates/index.hbs":14,"./views/templates/testing.hbs":15,"backbone":1,"jquery":10}],14:[function(require,module,exports){
+},{"./views/templates/index.hbs":14,"./views/templates/notFound.hbs":15,"./views/templates/testing.hbs":16,"backbone":1,"jquery":10}],14:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var Handlebars = require('hbsfy/runtime');
 module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -12663,7 +12673,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<h1>Hello, ";
+  buffer += "<h1>\n    Hello, ";
   if (helper = helpers.name) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.name); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -12680,7 +12690,19 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<h1>Testing Page <i class=\"fa fa-bank\" />\n</h1> <a href=\"/\">Go Home</a>\n";
+  return "<h1>\n    Are you in the right place?\n</h1>\n<a href=\"/\">Go Home</a>";
+  });
+
+},{"hbsfy/runtime":9}],16:[function(require,module,exports){
+// hbsfy compiled Handlebars template
+var Handlebars = require('hbsfy/runtime');
+module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  
+
+
+  return "<h1>\n    Testing Page <i class=\"fa fa-bank\" />\n</h1>\n<a href=\"/\">Go Home</a>\n";
   });
 
 },{"hbsfy/runtime":9}]},{},[12])

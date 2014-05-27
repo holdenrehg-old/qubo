@@ -1,16 +1,23 @@
 {
-	"user": {
-		"url": "/api/user",
-		"controller": "user",
-		"verbs": [
-			"get"
-		]
-	},
-	"todo": {
-		"url": "/api/todo",
-		"controller": "todo",
-		"verbs": [
-			"get"
-		]
-	}
+    "user": {
+        "url": "/api/user",
+        "controller": "user",
+        "verbs": [
+            "get"
+        ]
+    },
+    "todo": {
+        "url": "/api/todo",
+        "controller": "todo",
+        "verbs": [
+            "get"
+        ]
+    },
+    "event": {
+        "url": "/api/event",
+        "controller": "event",
+        "verbs": [
+            "get"
+        ]
+    }
 }
