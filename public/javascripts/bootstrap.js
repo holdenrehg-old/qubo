@@ -9,4 +9,4 @@ var found = Backbone.history.start({
 
 if (!found) {
 	$('body').html(require('./views/templates/notFound.hbs')());
-};
+}

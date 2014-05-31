@@ -12,7 +12,9 @@ var qubo = require('qubo'),
         },
         makeRoute: function(data) {
             var controller = Json.loadController(data.controller);
+            console.log('\nGenerating routes for ' + data.controller + ' controller\n');
             data.verbs.forEach(function(verb, index) {
+                console.log(verb + '\t' + data.url);
                 app[verb](data.url, controller[verb]);
             });
         },

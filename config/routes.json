@@ -3,21 +3,30 @@
         "url": "/api/user",
         "controller": "user",
         "verbs": [
-            "get"
+            "get",
+            "post",
+            "put",
+            "delete"
         ]
     },
     "todo": {
         "url": "/api/todo",
         "controller": "todo",
         "verbs": [
-            "get"
+            "get",
+            "post",
+            "put",
+            "delete"
         ]
     },
     "event": {
         "url": "/api/event",
         "controller": "event",
         "verbs": [
-            "get"
+            "get",
+            "post",
+            "put",
+            "delete"
         ]
     }
 }

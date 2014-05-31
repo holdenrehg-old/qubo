@@ -12635,7 +12635,7 @@ var found = Backbone.history.start({
 
 if (!found) {
 	$('body').html(require('./views/templates/notFound.hbs')());
-};
+}
 
 },{"./router.js":13,"./views/templates/notFound.hbs":15,"backbone":1,"jquery":10}],13:[function(require,module,exports){
 var Backbone = require('backbone'),
