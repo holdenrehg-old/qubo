@@ -1,12 +1,13 @@
-var Backbone = require('backbone');
-var $ = Backbone.$ = require('jquery');
-var Router = require('./router.js');
+var Backbone = require('backbone'),
+    $ = Backbone.$ = require('jquery'),
+    Router = require('./router.js'),
+    found;
 
 new Router();
-var found = Backbone.history.start({
+found = Backbone.history.start({
     pushState: true
 });
 
 if (!found) {
-	$('body').html(require('./views/templates/notFound.hbs')());
+    $('body').html(require('./views/notFound.hbs')());
 }
