@@ -1,5 +1,9 @@
 var Base = require('./base.js');
 
+/**
+ * @constructor
+ */
+
 function Session() {
     Base.call(this, []);
 }
