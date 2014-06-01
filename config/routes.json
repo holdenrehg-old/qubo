@@ -28,5 +28,14 @@
             "put",
             "delete"
         ]
+    },
+    "session": {
+        "url": "/api/session",
+        "controller": "session",
+        "verbs": [
+            "get",
+            "post",
+            "delete"
+        ]
     }
 }

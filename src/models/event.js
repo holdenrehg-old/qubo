@@ -1,9 +1,14 @@
-function Event(name) {
-	this.name = name;
-}
+var Base = require('./base.js');
 
-Event.prototype.toJson = function() {
-	return "{\"name\": \"" + this.name + "\"}";
-};
+/**
+ * @constructor
+ */
+
+function Event() {
+    Base.call(this, [
+        'name'
+    ]);
+}
+Event.prototype = new Base();
 
 module.exports = Event;

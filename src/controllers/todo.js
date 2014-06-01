@@ -2,7 +2,10 @@ var Todo = {
 	Model: require('qubo').model('todo'),
 
     get: function(req, res, next) {
-        res.send([]);
+        var todos = req.db.get('todo');
+        todos.find({}, {}, function(e, docs) {
+            res.send(docs);
+        });
     },
 
     post: function(req, res, next) {

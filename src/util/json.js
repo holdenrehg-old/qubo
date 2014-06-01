@@ -3,7 +3,7 @@ var qubo = require('qubo'),
     controllers = {},
     Json = {
         /**
-         * Generate express routes from a {}
+         * Generate express routes from an {}
          */
         routes: function(routes) {
             Object.keys(routes).forEach(function(route, index) {
