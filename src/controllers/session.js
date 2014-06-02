@@ -25,6 +25,7 @@
                                     token: cookie.sign(uuid.v4(), '123454321')
                                 }, function(err) {
                                     if (!err) {
+                                        res.status(201);
                                         res.send({
                                             status: 'success'
                                         });
@@ -36,6 +37,7 @@
                                     }
                                 });
                             } else {
+                                res.status(400);
                                 res.send({
                                     status: 'error',
                                     message: 'That user does not exist'
@@ -44,6 +46,7 @@
                         });
                     });
                 } catch (err) {
+                    res.status(400);
                     res.send({
                         status: 'error',
                         message: err
