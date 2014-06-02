@@ -11,7 +11,7 @@
         },
 
         getUser: function(req, res, next) {
-
+            res.send({status: 'todo'});
         },
 
         post: function(req, res, next) {

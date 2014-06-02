@@ -19,7 +19,7 @@
                     } else {
                         var url = data.url;
                         if(routeInfo.hasOwnProperty('url')) {
-                            url += ('/' + routeInfo.url);
+                            url += routeInfo.url;
                         }
                         if(routeInfo.hasOwnProperty('action')) {
                             action = routeInfo.action;
