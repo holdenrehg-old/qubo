@@ -30,7 +30,11 @@
             "get": true,
             "post": true,
             "put": true,
-            "delete": true
+            "delete": true,
+            "getEvent": {
+                "url": "/:id",
+                "verb": "get"
+            }
         }
     },
     "session": {

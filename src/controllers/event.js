@@ -10,6 +10,14 @@
             });
         },
 
+        getEvent: function(req, res, next) {
+            var collection = req.db.get('event'),
+                id = req.params.id;
+            collection.find({_id: id}, {}, function(e, docs) {
+                res.send(docs);
+            });
+        },
+
         post: function(req, res, next) {
             try {
                 var collection = req.db.get('event');
@@ -17,11 +25,12 @@
                     request: req,
                     strict: true
                 }, function(event) {
-                    collection.insert(event.obj(), function(err) {
+                    collection.insert(event.obj(), function(err, doc) {
                         if (!err) {
                             res.status(201);
                             res.send({
-                                status: 'success'
+                                status: 'success',
+                                id: doc._id
                             });
                         } else {
                             res.status(400);
