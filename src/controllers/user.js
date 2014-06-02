@@ -10,6 +10,10 @@
             });
         },
 
+        getUser: function(req, res, next) {
+
+        },
+
         post: function(req, res, next) {
             try {
                 var people = req.db.get('user');

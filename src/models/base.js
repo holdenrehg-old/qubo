@@ -25,15 +25,13 @@
                     throw "Missing parameter " + param;
                 }
             });
+            call(self);
         } else if (options.hasOwnProperty('object')) {
 
         } else {
             throw "BaseModel build only accepts 'request' or 'object' as options";
         }
-
-        call();
-        return this;
-    }
+    };
 
     /**
      * Returns an object that represents the model in the database
@@ -42,12 +40,12 @@
         var obj = {},
             self = this;
         _.each(this.data, function(include, param) {
-            if(include) {
+            if (include) {
                 obj[param] = self[param];
             }
         });
         return obj;
-    }
+    };
 
     /**
      * Check if the current instance has a certain parameter defined
@@ -55,7 +53,7 @@
      */
     BaseModel.prototype.has = function(param) {
         return this[param] !== undefined;
-    }
+    };
 
     module.exports = BaseModel;
 })(require('underscore'));

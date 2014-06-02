@@ -37,7 +37,7 @@
                 call(self);
             }
         });
-    }
+    };
 
     module.exports = User;
 })(require('qubo').model('base'), require('bcrypt'));

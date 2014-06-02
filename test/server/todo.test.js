@@ -7,7 +7,7 @@ var assert = require('assert'),
 describe('Todo API', function() {
     it('GET /todo', function(done) {
         agent
-            .get(appConfig.fullUrl + '/' + routes.todo.url)
+            .get(appConfig.fullUrl + routes.todo.url)
             .end(function(err, res) {
                 assert.equal(res.status, 200);
                 done();

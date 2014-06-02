@@ -13,8 +13,19 @@
             },
             makeRoute: function(data) {
                 var controller = Json.loadController(data.controller);
-                _.each(data.verbs, function(verb) {
-                    app[verb](data.url, controller[verb]);
+                _.each(data.routes, function(routeInfo, action) {
+                    if(routeInfo === true) {
+                        app[action](data.url, controller[action]);
+                    } else {
+                        var url = data.url;
+                        if(routeInfo.hasOwnProperty('url')) {
+                            url += ('/' + routeInfo.url);
+                        }
+                        if(routeInfo.hasOwnProperty('action')) {
+                            action = routeInfo.action;
+                        }
+                        app[routeInfo.verb](url, controller[action]);
+                    }
                 });
             },
             loadController: function(name) {

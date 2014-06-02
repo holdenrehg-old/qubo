@@ -2,40 +2,44 @@
     "user": {
         "url": "/api/user",
         "controller": "user",
-        "verbs": [
-            "get",
-            "post",
-            "put",
-            "delete"
-        ]
+        "routes": {
+            "get": true,
+            "post": true,
+            "put": true,
+            "delete": true,
+            "getUser": {
+                "url": "/:id",
+                "verb": "get"
+            }
+        }
     },
     "todo": {
         "url": "/api/todo",
         "controller": "todo",
-        "verbs": [
-            "get",
-            "post",
-            "put",
-            "delete"
-        ]
+        "routes": {
+            "get": true,
+            "post": true,
+            "put": true,
+            "delete": true
+        }
     },
     "event": {
         "url": "/api/event",
         "controller": "event",
-        "verbs": [
-            "get",
-            "post",
-            "put",
-            "delete"
-        ]
+        "routes": {
+            "get": true,
+            "post": true,
+            "put": true,
+            "delete": true
+        }
     },
     "session": {
         "url": "/api/session",
         "controller": "session",
-        "verbs": [
-            "get",
-            "post",
-            "delete"
-        ]
+        "routes": {
+            "get": true,
+            "post": true,
+            "delete": true
+        }
     }
 }

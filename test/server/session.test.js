@@ -4,10 +4,10 @@ var assert = require('assert'),
     routes = qubo.routeConfig(),
     appConfig = qubo.appConfig();
 
-describe('User API', function() {
-    it('GET /user', function(done) {
+describe('Event API', function() {
+    it('GET /session', function(done) {
         agent
-            .get(appConfig.fullUrl + routes.user.url)
+            .get(appConfig.fullUrl + routes.session.url)
             .end(function(err, res) {
                 assert.equal(res.status, 200);
                 done();
