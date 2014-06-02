@@ -107,4 +107,13 @@ describe('Event API', function() {
                 done();
             });
     });
+
+    it('DELETE /event 204 status', function(done) {
+        agent
+            .del(appConfig.fullUrl + routes.event.url + '/' + testEvent.id)
+            .end(function(err, res) {
+                assert.equal(res.status, 204);
+                done();
+            });
+    });
 });

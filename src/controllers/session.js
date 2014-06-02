@@ -22,7 +22,7 @@
                             if (user) {
                                 collection.insert({
                                     user: user._id,
-                                    token: cookie.sign(uuid.v4(), '123454321')
+                                    token: uuid.v4()
                                 }, function(err) {
                                     if (!err) {
                                         res.status(201);
@@ -55,7 +55,21 @@
             },
 
             delete: function(req, res, next) {
-
+                var collection = req.db.get('session');
+                collection.remove({
+                    token: req.params.token
+                }, function(err, doc) {
+                    if (!err) {
+                        res.status(204);
+                        res.send();
+                    } else {
+                        res.status(400);
+                        res.send({
+                            status: 'error',
+                            message: err
+                        });
+                    }
+                });
             }
         };
 

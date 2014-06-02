@@ -6,7 +6,10 @@
             "get": true,
             "post": true,
             "put": true,
-            "delete": true,
+            "delete": {
+                "url": "/:id",
+                "verb": "delete"
+            },
             "getUser": {
                 "url": "/:id",
                 "verb": "get"
@@ -20,7 +23,14 @@
             "get": true,
             "post": true,
             "put": true,
-            "delete": true
+            "delete": {
+                "url": "/:id",
+                "verb": "delete"
+            },
+            "getTodo": {
+                "url": "/:id",
+                "verb": "get"
+            }
         }
     },
     "event": {
@@ -30,7 +40,10 @@
             "get": true,
             "post": true,
             "put": true,
-            "delete": true,
+            "delete": {
+                "url": "/:id",
+                "verb": "delete"
+            },
             "getEvent": {
                 "url": "/:id",
                 "verb": "get"
@@ -43,7 +56,10 @@
         "routes": {
             "get": true,
             "post": true,
-            "delete": true
+            "delete": {
+                "url": "/:token",
+                "verb": "delete"
+            }
         }
     }
 }

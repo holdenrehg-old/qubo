@@ -50,7 +50,21 @@
         },
 
         delete: function(req, res, next) {
-
+            var collection = req.db.get('user');
+                collection.remove({
+                    _id: req.params.id
+                }, function(err, doc) {
+                    if (!err) {
+                        res.status(204);
+                        res.send();
+                    } else {
+                        res.status(400);
+                        res.send({
+                            status: 'error',
+                            message: err
+                        });
+                    }
+                });
         }
     };
 
