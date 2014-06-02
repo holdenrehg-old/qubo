@@ -1,40 +1,61 @@
-var _ = require('underscore');
+(function(_) {
 
-/**
- * @constructor
- */
+    /**
+     * @constructor
+     */
 
-function BaseModel(params) {
-    this.params = params;
-}
+    function BaseModel(data) {
+        this.data = data;
+    }
 
-/**
- * Builds a model out of an Express request, pulling information
- * from request parameters
- *
- * @param {obj} req
- */
-BaseModel.prototype.build = function(req) {
-    var self = this;
-    _.each(this.params, function(param) {
-        self[param] = req.param(param);
-        if (self[param] === undefined) {
-            throw "Missing parameter " + param;
+    /**
+     * Builds a model out of an Express request, pulling information
+     * from request parameters
+     *
+     * @param {obj} options
+     */
+    BaseModel.prototype.build = function(options, call) {
+        var self = this,
+            strict = options.hasOwnProperty('strict') && options.strict === true;
+
+        if (options.hasOwnProperty('request')) {
+            _.each(self.data, function(include, param) {
+                self[param] = options.request.param(param);
+                if (self[param] === undefined && strict) {
+                    throw "Missing parameter " + param;
+                }
+            });
+        } else if (options.hasOwnProperty('object')) {
+
+        } else {
+            throw "BaseModel build only accepts 'request' or 'object' as options";
         }
-    });
-    return this;
-}
 
-/**
- * Returns an object with only the form data parameters as properties
- */
-BaseModel.prototype.obj = function() {
-    var obj = {},
-        self = this;
-    _.each(this.params, function(param) {
-        obj[param] = self[param];
-    });
-    return obj;
-}
+        call();
+        return this;
+    }
 
-module.exports = BaseModel;
+    /**
+     * Returns an object that represents the model in the database
+     */
+    BaseModel.prototype.obj = function() {
+        var obj = {},
+            self = this;
+        _.each(this.data, function(include, param) {
+            if(include) {
+                obj[param] = self[param];
+            }
+        });
+        return obj;
+    }
+
+    /**
+     * Check if the current instance has a certain parameter defined
+     * @param {string} param
+     */
+    BaseModel.prototype.has = function(param) {
+        return this[param] !== undefined;
+    }
+
+    module.exports = BaseModel;
+})(require('underscore'));

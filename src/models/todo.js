@@ -1,12 +1,13 @@
-var Base = require('./base.js');
+(function(Base) {
 
-/**
- * @constructor
- */
+    /**
+     * @constructor
+     */
 
-function Todo() {
-    Base.call(this, []);
-}
-Todo.prototype = new Base();
+    function Todo() {
+        Base.call(this, {});
+    }
+    Todo.prototype = new Base();
 
-module.exports = Todo;
+    module.exports = Todo;
+})(require('qubo').model('base'));

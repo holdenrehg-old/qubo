@@ -1,44 +1,50 @@
-var Event = {
-    Model: require('qubo').model('event'),
+(function(_, qubo) {
 
-    get: function(req, res, next) {
-        var events = req.db.get('event');
-        events.find({}, {}, function(e, docs) {
-            res.send(docs);
-        });
-    },
+    var Event = {
+        Model: qubo.model('event'),
 
-    post: function(req, res, next) {
-        try {
-            var events = req.db.get('event'),
-                event = new Event.Model().build(req);
-            events.insert(event.obj(), function(err) {
-                if (!err) {
-                    res.send({
-                        status: 'success'
-                    });
-                } else {
-                    res.send({
-                        status: 'error',
-                        message: err
-                    });
-                }
+        get: function(req, res, next) {
+            var collection = req.db.get('event');
+            collection.find({}, {}, function(e, docs) {
+                res.send(docs);
             });
-        } catch (err) {
-            res.send({
-                status: 'error',
-                message: err
-            });
+        },
+
+        post: function(req, res, next) {
+            try {
+                var collection = req.db.get('event'),
+                    event = new Event.Model().build({
+                        request: req,
+                        strict: true
+                    });
+                collection.insert(event.obj(), function(err) {
+                    if (!err) {
+                        res.send({
+                            status: 'success'
+                        });
+                    } else {
+                        res.send({
+                            status: 'error',
+                            message: err
+                        });
+                    }
+                });
+            } catch (err) {
+                res.send({
+                    status: 'error',
+                    message: err
+                });
+            }
+        },
+
+        put: function(req, res, next) {
+
+        },
+
+        delete: function(req, res, next) {
+
         }
-    },
+    };
 
-    put: function(req, res, next) {
-
-    },
-
-    delete: function(req, res, next) {
-
-    }
-};
-
-module.exports = Event;
+    module.exports = Event;
+})(require('underscore'), require('qubo'));

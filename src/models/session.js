@@ -1,12 +1,16 @@
-var Base = require('./base.js');
+(function(Base) {
 
-/**
- * @constructor
- */
+    /**
+     * @constructor
+     */
 
-function Session() {
-    Base.call(this, []);
-}
-Session.prototype = new Base();
+    function Session() {
+        Base.call(this, {
+        	user: true,
+        	token: true
+    	});
+    }
+    Session.prototype = new Base();
 
-module.exports = Session;
+    module.exports = Session;
+})(require('qubo').model('base'));

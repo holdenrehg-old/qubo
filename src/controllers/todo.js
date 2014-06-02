@@ -1,24 +1,27 @@
-var Todo = {
-	Model: require('qubo').model('todo'),
+(function(qubo) {
 
-    get: function(req, res, next) {
-        var todos = req.db.get('todo');
-        todos.find({}, {}, function(e, docs) {
-            res.send(docs);
-        });
-    },
+    var Todo = {
+        Model: qubo.model('todo'),
 
-    post: function(req, res, next) {
+        get: function(req, res, next) {
+            var todos = req.db.get('todo');
+            todos.find({}, {}, function(e, docs) {
+                res.send(docs);
+            });
+        },
 
-    },
+        post: function(req, res, next) {
 
-    put: function(req, res, next) {
+        },
 
-    },
+        put: function(req, res, next) {
 
-    delete: function(req, res, next) {
+        },
 
-    }
-};
+        delete: function(req, res, next) {
 
-module.exports = Todo;
+        }
+    };
+
+    module.exports = Todo;
+})(require('qubo'));

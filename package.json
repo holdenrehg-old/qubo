@@ -24,7 +24,10 @@
         "jquery": "2.*",
         "underscore": "1.6.*",
         "backbone.marionette": "1.8.6",
-        "sass": "0.*"
+        "sass": "0.*",
+        "node-uuid": "*",
+        "bcrypt": "*",
+        "cookie-signature": "*"
     },
     "devDependencies": {
         "mocha": "*",
