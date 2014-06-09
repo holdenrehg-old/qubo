@@ -34,7 +34,7 @@ module.exports = function(grunt) {
     grunt.registerTask('test', ['jshint', 'mochaTest']);
 
     grunt.registerTask('server', 'Start watchify, sass watch, and nodemon', function() {
-        sh.run('watchify -t hbsfy public/javascripts/bootstrap.js -o public/javascripts/bundle.js &');
+        sh.run('watchify --debug -t hbsfy public/javascripts/bootstrap.js -o public/javascripts/bundle.js &');
         sh.run('sass --watch public/stylesheets &');
         sh.run('nodemon server');
     });
