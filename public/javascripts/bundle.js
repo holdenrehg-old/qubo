@@ -12624,44 +12624,59 @@ return jQuery;
 }).call(this);
 
 },{}],12:[function(require,module,exports){
-var Backbone = require('backbone'),
-    $ = Backbone.$ = require('jquery'),
-    Router = require('./router.js'),
-    found;
+Backbone = require('backbone'),
+$ = Backbone.$ = require('jquery');
+
+var Router = require('./router.js');
 
 new Router();
-found = Backbone.history.start({
+if (!Backbone.history.start({
     pushState: true
-});
-
-if (!found) {
+})) {
     $('body').html(require('./views/notFound.hbs')());
 }
 
-},{"./router.js":13,"./views/notFound.hbs":16,"backbone":1,"jquery":10}],13:[function(require,module,exports){
-var Backbone = require('backbone'),
-    $ = Backbone.$ = require('jquery'),
-    homeMain = require('./views/home/main.hbs'),
-    homeHeader = require('./views/home/header.hbs'),
-    notFound = require('./views/notFound.hbs');
-
+},{"./router.js":13,"./views/notFound.hbs":17,"backbone":1,"jquery":10}],13:[function(require,module,exports){
 module.exports = Backbone.Router.extend({
+
+    HomeView: require('./views/home/home.js'),
+    NotFoundView: require('./views/notFound.js'),
+
     routes: {
         '': 'index',
         '*notFound': 'notFound'
     },
+
     index: function() {
-        $('header').html(homeHeader());
-        $('main').html(homeMain());
-        console.log('initializing index route');
+        new this.HomeView({
+            el: $('body')
+        });
     },
+
     notFound: function() {
-        console.log('route not found');
-        $('main').html(notFound());
+        new this.NotFoundView({
+            el: $('body')
+        });
     }
 });
 
-},{"./views/home/header.hbs":14,"./views/home/main.hbs":15,"./views/notFound.hbs":16,"backbone":1,"jquery":10}],14:[function(require,module,exports){
+},{"./views/home/home.js":14,"./views/notFound.js":18}],14:[function(require,module,exports){
+module.exports = Backbone.View.extend({
+	
+	header: null,
+	main: null,
+
+	initialize: function() {
+		this.header = require('./template/header.hbs');
+		this.main = require('./template/main.hbs');
+		this.render(); 
+	},
+
+	render: function() {
+		this.$el.html(this.header() + this.main());
+	}
+});
+},{"./template/header.hbs":15,"./template/main.hbs":16}],15:[function(require,module,exports){
 // hbsfy compiled Handlebars template
 var Handlebars = require('hbsfy/runtime');
 module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -12670,19 +12685,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
-  return "<div class=\"pure-u-1\">\n	<h3 class=\"dark-red\">qubo</h3>\n</div>";
-  });
-
-},{"hbsfy/runtime":9}],15:[function(require,module,exports){
-// hbsfy compiled Handlebars template
-var Handlebars = require('hbsfy/runtime');
-module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
-  this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  
-
-
-  return "<div class=\"pure-g\">\n	<div id=\"content\" class=\"pure-u-3-4\">\n		<div class=\"pure-g \">\n			<div class=\"pure-u-1-2 short-con\">\n				<div class=\"short\"></div>\n			</div>\n			<div class=\"pure-u-1-2 short-con\">\n				<div class=\"short\"></div>\n			</div>\n		</div>\n		<div class=\"pure-g\">\n			<div class=\"pure-u-1-4 tall-con\">\n				<div class=\"tall\"></div>\n			</div>\n			<div class=\"pure-u-1-4 tall-con\">\n				<div class=\"tall\"></div>\n			</div>\n			<div class=\"pure-u-1-4 tall-con\">\n				<div class=\"tall\"></div>\n			</div>\n			<div class=\"pure-u-1-4 tall-con\">\n				<div class=\"tall\"></div>\n			</div>\n		</div>\n	</div>\n	<div class=\"pure-u-1-24\"></div>\n	<div class=\"pure-u-1-5\">\n		<button id=\"signin\" class=\"white\">Sign in</button>\n		<button id=\"register\" class=\"white\">Register</button>\n	</div>\n</div>\n";
+  return "<header class=\"pure-g\">\n	<div class=\"pure-u-1\">\n		<h3 class=\"dark-red\">qubo</h3>\n	</div>\n</header>	";
   });
 
 },{"hbsfy/runtime":9}],16:[function(require,module,exports){
@@ -12694,7 +12697,31 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   
 
 
+  return "<main>\n	<div class=\"pure-g\">\n		<div id=\"content\" class=\"pure-u-3-4\">\n			<div class=\"pure-g \">\n				<div class=\"pure-u-1-2 short-con\">\n					<div class=\"short\"></div>\n				</div>\n				<div class=\"pure-u-1-2 short-con\">\n					<div class=\"short\"></div>\n				</div>\n			</div>\n			<div class=\"pure-g\">\n				<div class=\"pure-u-1-4 tall-con\">\n					<div class=\"tall\"></div>\n				</div>\n				<div class=\"pure-u-1-4 tall-con\">\n					<div class=\"tall\"></div>\n				</div>\n				<div class=\"pure-u-1-4 tall-con\">\n					<div class=\"tall\"></div>\n				</div>\n				<div class=\"pure-u-1-4 tall-con\">\n					<div class=\"tall\"></div>\n				</div>\n			</div>\n		</div>\n		<div class=\"pure-u-1-24\"></div>\n		<div class=\"pure-u-1-5\">\n			<button id=\"signin\" class=\"white\">Sign in</button>\n			<button id=\"register\" class=\"white\">Register</button>\n		</div>\n	</div>\n</main>";
+  });
+
+},{"hbsfy/runtime":9}],17:[function(require,module,exports){
+// hbsfy compiled Handlebars template
+var Handlebars = require('hbsfy/runtime');
+module.exports = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  
+
+
   return "<h1>\n    Are you in the right place?\n</h1>\n<a href=\"/\">Go Home</a>";
   });
 
-},{"hbsfy/runtime":9}]},{},[12])
+},{"hbsfy/runtime":9}],18:[function(require,module,exports){
+module.exports = Backbone.View.extend({
+	
+    initialize: function() {
+        this.render();
+    },
+
+    render: function() {
+        this.$el.html('<h1>Are you in the right place?</h1><a href="/">Go Home</a>');
+    }
+});
+
+},{}]},{},[12])

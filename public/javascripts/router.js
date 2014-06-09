@@ -1,21 +1,22 @@
-var Backbone = require('backbone'),
-    $ = Backbone.$ = require('jquery'),
-    homeMain = require('./views/home/main.hbs'),
-    homeHeader = require('./views/home/header.hbs'),
-    notFound = require('./views/notFound.hbs');
-
 module.exports = Backbone.Router.extend({
+
+    HomeView: require('./views/home/home.js'),
+    NotFoundView: require('./views/notFound.js'),
+
     routes: {
         '': 'index',
         '*notFound': 'notFound'
     },
+
     index: function() {
-        $('header').html(homeHeader());
-        $('main').html(homeMain());
-        console.log('initializing index route');
+        new this.HomeView({
+            el: $('body')
+        });
     },
+
     notFound: function() {
-        console.log('route not found');
-        $('main').html(notFound());
+        new this.NotFoundView({
+            el: $('body')
+        });
     }
 });
