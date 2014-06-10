@@ -4,17 +4,31 @@
 		<div class="fieldset">
 			<span><label for="email">Email</label></span>
 			<span><input type="text" name="email" /></span>
+			<div class="message"></div>
+		</div>
+		<div class="fieldset">
+			<span><label for="firstName">First Name</label></span>
+			<span><input type="text" name="firstName" /></span>
+			<div class="message"></div>
+		</div>
+		<div class="fieldset">
+			<span><label for="lastName">Last Name</label></span>
+			<span><input type="text" name="lastName" /></span>
+			<div class="message"></div>
 		</div>
 		<div class="fieldset">
 			<span><label for="password">Password</label></span>
 			<span><input type="password" name="password" /></span>
+			<div class="message"></div>
 		</div>
 		<div class="fieldset">
 			<span><label for="password">Confirm Password</label></span>
-			<span><input type="password" name="confirm-password" /></span>
+			<span><input type="password" name="confirm" /></span>
+			<div class="message"></div>
 		</div>
 		<div class="fieldset">
-			<input type="submit" class="red small" value="Register" />
+			<span><input type="submit" id="submit-register" class="red small" value="Register" /></span>
+			<span><img id="spinner" /></span>
 		</div>
 		<div class="clearfix"></div>
 	</form>

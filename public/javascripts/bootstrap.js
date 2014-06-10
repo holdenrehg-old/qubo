@@ -3,7 +3,7 @@ $ = Backbone.$ = require('jquery');
 
 var Router = require('./router.js');
 
-new Router();
+App = new Router();
 Backbone.history.start({
     pushState: true
 });
