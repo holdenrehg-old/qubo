@@ -26,8 +26,14 @@
                 }
             });
             call(self);
-        } else if (options.hasOwnProperty('object')) {
-
+        } else if (options.hasOwnProperty('obj')) {
+            _.each(self.data, function(include, param) {
+                self[param] = options.obj[param];
+                if (self[param] === undefined && strict) {
+                    throw "Missing parameter " + param;
+                }
+            });
+            call(self);
         } else {
             throw "BaseModel build only accepts 'request' or 'object' as options";
         }
@@ -49,11 +55,16 @@
 
     /**
      * Check if the current instance has a certain parameter defined
+     *
      * @param {string} param
      */
     BaseModel.prototype.has = function(param) {
         return this[param] !== undefined;
     };
+
+    BaseModel.prototype.insert = function() {
+        throw new "Models extending BaseModel are required to override insert";
+    }
 
     module.exports = BaseModel;
 })(require('underscore'));

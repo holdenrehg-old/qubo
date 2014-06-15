@@ -1,16 +1,18 @@
 <div class="overlay"></div>
 <div class="modal">
-	<form>
+	<form id="signinform">
 		<div class="fieldset">
 			<span><label for="email">Email</label></span>
 			<span><input type="text" name="email" /></span>
+			<div class="message"></div>
 		</div>
 		<div class="fieldset">
 			<span><label for="password">Password</label></span>
 			<span><input type="password" name="password" /></span>
+			<div class="message"></div>
 		</div>
 		<div class="fieldset">
-			<input type="submit" class="red small" value="Signin" />
+			<input type="submit" id="submit-signin" class="red small" value="Signin" />
 		</div>
 		<div class="clearfix"></div>
 	</form>

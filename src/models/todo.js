@@ -6,6 +6,8 @@
 
     function Todo() {
         Base.call(this, {});
+
+        this.collection = 'todo';
     }
     Todo.prototype = new Base();
 

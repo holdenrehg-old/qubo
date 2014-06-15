@@ -1,4 +1,4 @@
-(function(qubo, uuid, cookie) {
+(function(qubo, cookie, bcrypt) {
 
     var auth = qubo.util('auth'),
         User = qubo.model('user'),
@@ -6,72 +6,90 @@
             Model: qubo.model('session'),
 
             get: function(req, res, next) {
-                var sessions = req.db.get('session');
-                sessions.find({}, {}, function(e, docs) {
-                    res.send(docs);
-                });
+                var sessions = req.db.get('session'),
+                    cookies = req.parseCookies();
+                if (cookies.auth) {
+                    auth.cookieExists(cookies.auth, req.db, function(user) {
+                        if (user) {
+                            res.status(200);
+                            res.send(user);
+                        } else {
+                            res.status(401);
+                            res.send();
+                        }
+                    });
+                } else {
+                    res.status(401);
+                    res.send();
+                }
             },
 
             post: function(req, res, next) {
                 try {
-                    var collection = req.db.get('session');
-                    new User().build({
-                        request: req
-                    }, function(user) {
-                        auth.userExists(user, req.db, function(user) {
-                            if (user) {
-                                collection.insert({
-                                    user: user._id,
-                                    token: uuid.v4()
-                                }, function(err) {
-                                    if (!err) {
-                                        res.status(201);
-                                        res.send({
-                                            status: 'success'
-                                        });
-                                    } else {
-                                        res.send({
-                                            status: 'error',
-                                            message: err
-                                        });
-                                    }
-                                });
-                            } else {
-                                res.status(400);
-                                res.send({
-                                    status: 'error',
-                                    message: 'That user does not exist'
-                                });
-                            }
-                        });
+                    auth.userExists(req.param('email'), req.db, function(user) {
+                        if (user && bcrypt.compareSync(req.param('password'), user.password)) {
+                            new Session.Model().build({
+                                obj: {
+                                    user: user
+                                }
+                            }, function(session) {
+                                if (session) {
+                                    session.insert(req.db, function(err) {
+                                        if (!err) {
+                                            res.status(201);
+                                            res.cookie('auth', session.token);
+                                            res.send();
+                                        } else {
+                                            res.send({
+                                                status: 'error',
+                                                message: err
+                                            });
+                                        }
+                                    });
+                                } else {
+                                    res.status(400);
+                                    res.send({
+                                        status: 'error',
+                                        message: 'Could not create session'
+                                    });
+                                }
+                            });
+                        } else {
+                            res.status(400);
+                            res.send();
+                        }
                     });
                 } catch (err) {
                     res.status(400);
-                    res.send({
-                        status: 'error',
-                        message: err
-                    });
+                    res.send();
                 }
             },
 
             delete: function(req, res, next) {
-                var collection = req.db.get('session');
-                collection.remove({
-                    token: req.params.token
-                }, function(err, doc) {
-                    if (!err) {
-                        res.status(204);
-                        res.send();
-                    } else {
-                        res.status(400);
-                        res.send({
-                            status: 'error',
-                            message: err
-                        });
-                    }
-                });
+                var sessions = req.db.get('session'),
+                    cookies = req.parseCookies();
+
+                if (cookies.auth()) {
+                    sessions.remove({
+                        token: cookies.auth
+                    }, function(err, doc) {
+                        if (!err) {
+                            res.status(204);
+                            res.send();
+                        } else {
+                            res.status(400);
+                            res.send({
+                                status: 'error',
+                                message: err
+                            });
+                        }
+                    });
+                } else {
+                    res.status(200);
+                    res.send();
+                }
             }
         };
 
     module.exports = Session;
-})(require('qubo'), require('node-uuid'), require('cookie-signature'));
+})(require('qubo'), require('cookie-signature'), require('bcrypt'));

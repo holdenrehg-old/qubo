@@ -2,32 +2,35 @@
 
     var app = qubo.app(),
         controllers = {},
-        Json = {
+        Router = {
+
             /**
              * Generate express routes from an {}
              */
-            routes: function(routes) {
+            init: function(routes) {
                 _.each(routes, function(data) {
-                    Json.makeRoute(data);
+                    Router.makeRoute(data);
                 });
             },
+
             makeRoute: function(data) {
-                var controller = Json.loadController(data.controller);
+                var controller = Router.loadController(data.controller);
                 _.each(data.routes, function(routeInfo, action) {
-                    if(routeInfo === true) {
+                    if (routeInfo === true) {
                         app[action](data.url, controller[action]);
                     } else {
                         var url = data.url;
-                        if(routeInfo.hasOwnProperty('url')) {
+                        if (routeInfo.hasOwnProperty('url')) {
                             url += routeInfo.url;
                         }
-                        if(routeInfo.hasOwnProperty('action')) {
+                        if (routeInfo.hasOwnProperty('action')) {
                             action = routeInfo.action;
                         }
                         app[routeInfo.verb](url, controller[action]);
                     }
                 });
             },
+
             loadController: function(name) {
                 if (controllers[name] === undefined) {
                     controllers[name] = qubo.controller(name);
@@ -36,5 +39,5 @@
             }
         };
 
-    module.exports = Json;
+    module.exports = Router;
 })(require('underscore'), require('qubo'));

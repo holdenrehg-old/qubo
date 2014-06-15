@@ -8,6 +8,8 @@
         Base.call(this, {
             name: true
         });
+
+        this.collection = 'event';
     }
     Event.prototype = new Base();
 

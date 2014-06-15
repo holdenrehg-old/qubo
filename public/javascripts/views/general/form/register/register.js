@@ -12,7 +12,7 @@ module.exports = Backbone.View.extend({
     },
 
     isValid: function() {
-        var formArray = this.$el.find('form').serializeArray(),
+        var formArray = this.$el.find('#registerform').serializeArray(),
             inputs = {},
             valid = true;
         formArray.forEach(function(obj) {
@@ -68,10 +68,11 @@ module.exports = Backbone.View.extend({
         if (this.isValid()) {
         	var spinner = $('#spinner');
         	spinner.attr('src', '/images/ajax-loader.gif').show();
-            $.post('/api/user', this.$el.find('form').serialize())
+            $.post('/api/user', this.$el.find('#registerform').serialize())
                 .done(function(data) {
                     console.log(data);
                     // log the user in
+                    App.navigate('feed', true);
                 })
                 .fail(function(res) {
                     console.log(res.responseJSON);

@@ -2,17 +2,24 @@
 
     module.exports = Backbone.View.extend({
 
-        header: null,
-        main: null,
+        headerTemplate: null,
+        mainTemplate: null,
+        $header: null,
+        $main: null,
+        $footer: null,
 
-        initialize: function() {
-            this.header = require('./template/header.hbs');
-            this.main = require('./template/main.hbs');
+        initialize: function(options) {
+            this.headerTemplate = require('./template/header.hbs');
+            this.mainTemplate = require('./template/main.hbs');
+            this.$header = options.dom.$header;
+            this.$main = options.dom.$main;
+            this.$footer = options.dom.$footer;
             this.render();
         },
 
         render: function() {
-            this.$el.html(this.header() + this.main());
+            this.$header.html(this.headerTemplate());
+            this.$main.html(this.mainTemplate());
         },
 
         events: {
@@ -21,9 +28,9 @@
         },
 
         showSignin: function(event) {
-        	new SigninForm({
-        		el: this.$el
-        	});
+            new SigninForm({
+                el: this.$el
+            });
         },
 
         showRegister: function(event) {
