@@ -27,22 +27,42 @@
 		events: {
 			'click #sidenav-user': 'showProfile',
 			'click #sidenav-feed': 'showFeed',
+			'click #sidenav-explore': 'showExplore'
 			'click #sidenav-settings': 'showSettings',
-			'click #sidenav-logout': 'showLogout'
+			'click #sidenav-logout': 'showLogout',
 		},
 
+		/**
+		 *
+		 */
 		showProfile: function() {
 			App.navigate(this.username, true);
 		},
 
+		/**
+		 *
+		 */
 		showFeed: function() {
 			App.navigate('feed', true);
 		},
 
+		/**
+		 *
+		 */
+		showExplore: function() {
+			// explore
+		}
+
+		/**
+		 *
+		 */
 		showSettings: function() {
 			App.navigate('settings', true);
 		},
 
+		/**
+		 *
+		 */
 		showLogout: function() {
 			App.navigate('logout', true);
 		}
