@@ -69,7 +69,7 @@
                 var sessions = req.db.get('session'),
                     cookies = req.parseCookies();
 
-                if (cookies.auth()) {
+                if (cookies.auth) {
                     sessions.remove({
                         token: cookies.auth
                     }, function(err, doc) {

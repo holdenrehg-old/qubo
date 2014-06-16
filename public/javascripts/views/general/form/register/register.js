@@ -22,6 +22,10 @@ module.exports = Backbone.View.extend({
             this.showError($('input[name=email]'), 'Email is required');
             valid = false;
         }
+        if(inputs.username === '') {
+            this.showError($('input[name=username]'), 'Username is required');
+            valid = false;
+        }
         if (inputs.firstName === '') {
             this.showError($('input[name=firstName]'), 'First name is required');
             valid = false;
@@ -32,15 +36,6 @@ module.exports = Backbone.View.extend({
         }
         if (inputs.password === '') {
             this.showError($('input[name=password]'), 'Password is required');
-            valid = false;
-        }
-        if (inputs.confirm === '') {
-            this.showError($('input[name=confirm]'), 'Confirm password is required');
-            valid = false;
-        }
-        if (inputs.confirm !== inputs.password) {
-            this.showError($('input[name=confirm]'), 'Passwords do not match');
-            this.showError($('input[name=password]'), 'Passwords do not match');
             valid = false;
         }
 
@@ -70,7 +65,6 @@ module.exports = Backbone.View.extend({
         	spinner.attr('src', '/images/ajax-loader.gif').show();
             $.post('/api/user', this.$el.find('#registerform').serialize())
                 .done(function(data) {
-                    console.log(data);
                     // log the user in
                     App.navigate('feed', true);
                 })

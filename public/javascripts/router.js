@@ -1,7 +1,101 @@
-(function(_, cookie) {
+(function(_, User, cookie) {
+
+    var Router = Backbone.Router.extend({
+
+        HomeView: require('./views/home/home.js'),
+        FeedView: require('./views/feed/feed.js'),
+        ProfileView: require('./views/profile/profile.js'),
+        NotFoundView: require('./views/notFound.js'),
+
+        routes: {
+            '': 'index',
+            'feed(/)': 'feed',
+            'settings(/)': 'settings',
+            'logout(/)': 'logout',
+            ':username(/)': 'profile',
+            '*notFound': 'notFound'
+        },
+
+        authRoutes: [
+            'feed',
+            'settings',
+            'profile',
+            'logout'
+        ],
+
+        index: function() {
+            new this.HomeView({
+                el: $('body'),
+                dom: this.getDOM()
+            });
+        },
+
+        feed: function(args, user) {
+            new this.FeedView({
+                el: $('body'),
+                dom: this.getDOM(),
+                currentUser: user
+            });
+        },
+
+        settings: function() {
+            $('body').html('<h3>settings</h3>');
+        },
+
+        profile: function(username) {
+            var user = new User({
+                id: username
+            }),
+                self = this;
+            user.fetch({
+
+                success: function(user) {
+                    new self.ProfileView({
+                        el: $('body'),
+                        dom: self.getDOM(),
+                        user: user
+                    });
+                },
+
+                error: function() {
+                    $('body').html('user does not exist');
+                }
+            });
+        },
+
+        logout: function() {
+            var promise = $.ajax({
+                url: '/api/session',
+                type: 'DELETE'
+            });
+
+            promise
+                .done(function() {
+                    App.navigate('feed', true);
+                })
+                .fail(function() {
+                    console.log('there was a problem');
+                });
+        },
+
+        notFound: function() {
+            new this.NotFoundView({
+                el: $('body')
+            });
+        },
+
+        getDOM: function() {
+            return {
+                $header: $('header'),
+                $main: $('main'),
+                $footer: $('footer'),
+                $sidenav: $('#sidenav')
+            };
+        }
+    });
 
     /**
-     * Add before/after functionality to Router
+     * Add before functionality
      *
      * http://danialk.github.io/blog/2013/06/08/backbone-tips-after-and-before-methods-for-router/
      */
@@ -17,90 +111,48 @@
 
         Backbone.history.route(route, function(fragment) {
             var args = router._extractParameters(route, fragment),
-                before = router.before.apply(router, arguments),
-                accessingAuth = router.authRoutes.indexOf(arguments[0]) !== -1;
-                console.log(arguments);
-            before
-                // user has cookie
-                .done(function(res) {
-                    if(!accessingAuth) {
+                accessingAuth = router.authRoutes.indexOf(name) !== -1,
+                user = new User();
+
+            user.fetch({
+                // user has a session
+                success: function(user) {
+                    args.push(user);
+
+                    // trying to access the home page after logged in
+                    if (!accessingAuth && name === 'index') {
                         App.navigate('feed', true);
                     } else {
                         callback && callback.apply(router, args);
-                        router.after.apply(router, arguments);
 
                         router.trigger.apply(router, ['route:' + name].concat(args));
                         router.trigger('route', name, args);
                         Backbone.history.trigger('route', router, name, args);
                     }
-                })
-                // unauthorized
-                .fail(function(res) {
-                    if(accessingAuth) {
+                },
+
+                // unauthorized user
+                error: function() {
+
+                    // tryin to access authorized route
+                    if (accessingAuth) {
                         App.navigate('', true);
                     } else {
                         callback && callback.apply(router, args);
-                        router.after.apply(router, arguments);
 
                         router.trigger.apply(router, ['route:' + name].concat(args));
                         router.trigger('route', name, args);
                         Backbone.history.trigger('route', router, name, args);
                     }
-                });
+                }
+            });
         });
         return this;
     };
-    Backbone.Router.prototype.before = function() {};
-    Backbone.Router.prototype.after = function() {};
-
-    var Router = Backbone.Router.extend({
-
-        HomeView: require('./views/home/home.js'),
-        FeedView: require('./views/feed/feed.js'),
-        NotFoundView: require('./views/notFound.js'),
-
-        routes: {
-            '': 'index',
-            'feed': 'feed',
-            '*notFound': 'notFound'
-        },
-
-        authRoutes: [
-            'feed'
-        ],
-
-        before: function(options) {
-            return $.get('/api/session');
-        },
-
-        index: function() {
-            new this.HomeView({
-                el: $('body'),
-                dom: this.getDOM()
-            });
-        },
-
-        feed: function() {
-            console.log('feed route');
-            new this.FeedView({
-                el: $('body')
-            });
-        },
-
-        notFound: function() {
-            new this.NotFoundView({
-                el: $('body')
-            });
-        },
-
-        getDOM: function() {
-            return {
-                $header: $('header'),
-                $main: $('main'),
-                $footer: $('footer')
-            };
-        }
-    });
 
     module.exports = Router;
-})(require('underscore'), require('./util/cookie.js'));
+})(
+    require('underscore'),
+    require('./models/user.js'),
+    require('./util/cookie.js')
+);

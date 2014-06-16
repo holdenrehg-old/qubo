@@ -1,24 +1,30 @@
-(function(SigninForm, RegisterForm) {
+(function(SigninForm, RegisterForm, Base) {
 
-    module.exports = Backbone.View.extend({
+    module.exports = Base.extend({
 
         headerTemplate: null,
         mainTemplate: null,
-        $header: null,
-        $main: null,
-        $footer: null,
 
-        initialize: function(options) {
-            this.headerTemplate = require('./template/header.hbs');
+        /**
+         * @override
+         */
+        setup: function() {
+            this.headerTemplate = require('../general/template/header.hbs');
             this.mainTemplate = require('./template/main.hbs');
-            this.$header = options.dom.$header;
-            this.$main = options.dom.$main;
-            this.$footer = options.dom.$footer;
-            this.render();
+
+            this.$el.removeClass('withsidenav');
+            this.clear([
+                this.$sidenav
+            ]);
         },
 
+        /**
+         * @override
+         */
         render: function() {
-            this.$header.html(this.headerTemplate());
+            this.$header.html(this.headerTemplate({
+                title: 'qubo'
+            }));
             this.$main.html(this.mainTemplate());
         },
 
@@ -29,14 +35,18 @@
 
         showSignin: function(event) {
             new SigninForm({
-                el: this.$el
+                el: this.$main
             });
         },
 
         showRegister: function(event) {
             new RegisterForm({
-                el: this.$el
+                el: this.$main
             });
         }
     });
-})(require('../general/form/signin/signin.js'), require('../general/form/register/register.js'));
+})(
+    require('../general/form/signin/signin.js'),
+    require('../general/form/register/register.js'),
+    require('../general/base.js')
+);

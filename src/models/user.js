@@ -9,8 +9,8 @@
             firstName: true,
             lastName: true,
             password: true,
-            confirm: false,
-            email: true
+            email: true,
+            username: true
         });
 
         this.collection = 'user';
@@ -27,13 +27,7 @@
         var self = this;
         Base.prototype.build.call(self, options, function() {
             if (self.has('password')) {
-                if (self.has('confirm') && self.password !== self.confirm) {
-                    throw "Password and confirm password do not match";
-                }
-                delete self.confirm;
-                console.log('hashing password : ' + self.password);
                 self.password = bcrypt.hashSync(self.password, bcrypt.genSaltSync());
-                console.log(self.password);
                 call(self);
             }
         });

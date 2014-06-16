@@ -1,13 +1,33 @@
-html {
-    $dark-red: #b40000;
-    $darker-red: #631515;
-    $white: #ffffff;
-    $light-grey: #f9f9f9;
-    $mid-grey: #BDBDBD;
-    $dark-grey: #666666;
+/**********
+
+VARS 
+
+/**********/
+ $qubo-red: rgb(194, 85, 85);
+ $dark-red: rgb(184, 64, 64);
+ $darker-red: #631515;
+ $white: #ffffff;
+ $light-grey: #f9f9f9;
+ $mid-grey: #BDBDBD;
+ $dark-grey: #666666;
+ html {
     font-family: sans-serif;
     font-weight: 100;
     color: $dark-grey;
+    /**********
+
+    RESET
+
+    **********/
+    body, p, h1, h2, h3, h4, h5, h6 {
+        padding: 0px;
+        margin: 0;
+    }
+    /********** 
+
+    CONTAINERS 
+
+    **********/
     .pure-g > div {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
@@ -15,17 +35,33 @@ html {
     }
     header {
         text-align: center;
+        padding: 25px;
     }
     body {
         padding: 0 10px 10px 10px;
+        &.withsidenav {
+            padding-left: 80px;
+        }
+    }
+    main {
+        padding: 25px;
+    }
+    /********** 
+
+    TYPOGRPAHY
+
+    **********/
+    p {
+        font-size: 9px;
     }
     h1 {
     }
     h2 {
+        font-size: 40px;
     }
     h3 {
         font-weight: 100;
-        font-size: 1.5em;
+        font-size: 25px;
     }
     h4 {
     }
@@ -33,11 +69,31 @@ html {
     }
     h6 {
     }
-    a, .dark-red {
-        color: $dark-red;
-    }
     a {
         text-decoration: none;
+        color: $qubo-red;
+    }
+    #title {
+        color: $qubo-red;
+    }
+    .fa {
+        font-size: 22px;
+    }
+    .fancy {
+        font-family:'Lobster';
+    }
+    .hide {
+        visibility: hidden;
+    }
+    /********** 
+
+    GENERAL 
+
+    **********/
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
     }
     button, input[type="submit"] {
         height: 40px;
@@ -49,17 +105,17 @@ html {
         font-weight: 100;
         &.white {
             background: $white;
-            border: 2px solid $dark-red;
-            color: $dark-red;
+            border: 2px solid $qubo-red;
+            color: $qubo-red;
             &:hover {
-                background: $dark-red;
+                background: $qubo-red;
                 color: $white;
                 transition: background .5s;
             }
         }
         &.red {
-            background: $dark-red;
-            border: 2px solid $dark-red;
+            background: $qubo-red;
+            border: 2px solid $qubo-red;
             color: $white;
             &:hover {
                 color: $light-grey;
@@ -93,7 +149,7 @@ html {
             padding: 10px 0 10px 0;
         }
         .error {
-            background: $dark-red;
+            background: $qubo-red;
             opacity: .5;
             color: $white;
             transition: background .3s linear;
@@ -110,34 +166,35 @@ html {
             float: right;
         }
     }
+    aside {
+        &#sidenav {
+            position: fixed;
+            top: 0;
+            left: 0px;
+            height: 100%;
+            width: 70px;
+            background: $qubo-red;
+            * {
+                color: $white;    
+            }
+            li {
+                text-align: center;
+                padding: 20px 10px 20px 10px;
+                &:hover:not(#logo) {
+                    cursor: pointer;
+                    background: $dark-red;
+                }
+            }
+            #logo {
+                padding-bottom: 50px;
+            }
+        }
+    }
     .clearfix {
         clear: both;
     }
-    #content {
-        @mixin container() {
-            background: $light-grey;
-            height: 100%;
-            opacity: .5;
-            &:hover {
-                cursor: pointer;
-                opacity: 1;
-                transition: opacity .5s;
-            }
-        }
-        .short-con {
-            height: 100px;
-            padding: 0 10px 10px 0;
-            .short {
-                @include container();
-            }
-        }
-        .tall-con {
-            height: 400px;
-            padding: 0 10px 10px 0;
-            .tall {
-                @include container();
-            }
-        }
+    .none {
+        display: none;
     }
     .modal {
         position: fixed;
@@ -163,5 +220,36 @@ html {
         background: #f5f5f5;
         opacity: .75;
         z-index: 500;
+    }
+    /********** 
+
+    HOME SCREEN 
+
+    **********/
+    #content {
+        @mixin container() {
+            background: $light-grey;
+            height: 100%;
+            opacity: .5;
+            &:hover {
+                cursor: pointer;
+                opacity: 1;
+                transition: opacity .5s;
+            }
+        }
+        .short-con {
+            height: 100px;
+            padding: 0 10px 10px 0;
+            .short {
+                @include container();
+            }
+        }
+        .tall-con {
+            height: 400px;
+            padding: 0 10px 10px 0;
+            .tall {
+                @include container();
+            }
+        }
     }
 }

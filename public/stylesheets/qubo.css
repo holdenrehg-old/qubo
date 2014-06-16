@@ -1,22 +1,75 @@
+/**********
+
+VARS 
+
+/**********/
 html {
   font-family: sans-serif;
   font-weight: 100;
-  color: #666666; }
+  color: #666666;
+    /**********
+
+    RESET
+
+    **********/
+    /********** 
+
+    CONTAINERS 
+
+    **********/
+    /********** 
+
+    TYPOGRPAHY
+
+    **********/
+    /********** 
+
+    GENERAL 
+
+    **********/
+    /********** 
+
+    HOME SCREEN 
+
+    **********/ }
+  html body, html p, html h1, html h2, html h3, html h4, html h5, html h6 {
+    padding: 0px;
+    margin: 0; }
   html .pure-g > div {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
   html header {
-    text-align: center; }
+    text-align: center;
+    padding: 25px; }
   html body {
     padding: 0 10px 10px 10px; }
+    html body.withsidenav {
+      padding-left: 80px; }
+  html main {
+    padding: 25px; }
+  html p {
+    font-size: 9px; }
+  html h2 {
+    font-size: 40px; }
   html h3 {
     font-weight: 100;
-    font-size: 1.5em; }
-  html a, html .dark-red {
-    color: #b40000; }
+    font-size: 25px; }
   html a {
-    text-decoration: none; }
+    text-decoration: none;
+    color: #c25555; }
+  html #title {
+    color: #c25555; }
+  html .fa {
+    font-size: 22px; }
+  html .fancy {
+    font-family: 'Lobster'; }
+  html .hide {
+    visibility: hidden; }
+  html ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0; }
   html button, html input[type="submit"] {
     height: 40px;
     font-size: 15px;
@@ -27,15 +80,15 @@ html {
     font-weight: 100; }
     html button.white, html input[type="submit"].white {
       background: white;
-      border: 2px solid #b40000;
-      color: #b40000; }
+      border: 2px solid #c25555;
+      color: #c25555; }
       html button.white:hover, html input[type="submit"].white:hover {
-        background: #b40000;
+        background: #c25555;
         color: white;
         transition: background .5s; }
     html button.red, html input[type="submit"].red {
-      background: #b40000;
-      border: 2px solid #b40000;
+      background: #c25555;
+      border: 2px solid #c25555;
       color: white; }
       html button.red:hover, html input[type="submit"].red:hover {
         color: #f9f9f9;
@@ -59,7 +112,7 @@ html {
     width: 100%;
     padding: 10px 0 10px 0; }
   html form .error {
-    background: #b40000;
+    background: #c25555;
     opacity: .5;
     color: white;
     transition: background .3s linear; }
@@ -72,30 +125,27 @@ html {
   html form #spinner {
     padding: 7px 20px 7px 7px;
     float: right; }
+  html aside#sidenav {
+    position: fixed;
+    top: 0;
+    left: 0px;
+    height: 100%;
+    width: 70px;
+    background: #c25555; }
+    html aside#sidenav * {
+      color: white; }
+    html aside#sidenav li {
+      text-align: center;
+      padding: 20px 10px 20px 10px; }
+      html aside#sidenav li:hover:not(#logo) {
+        cursor: pointer;
+        background: #b84040; }
+    html aside#sidenav #logo {
+      padding-bottom: 50px; }
   html .clearfix {
     clear: both; }
-  html #content .short-con {
-    height: 100px;
-    padding: 0 10px 10px 0; }
-    html #content .short-con .short {
-      background: #f9f9f9;
-      height: 100%;
-      opacity: .5; }
-      html #content .short-con .short:hover {
-        cursor: pointer;
-        opacity: 1;
-        transition: opacity .5s; }
-  html #content .tall-con {
-    height: 400px;
-    padding: 0 10px 10px 0; }
-    html #content .tall-con .tall {
-      background: #f9f9f9;
-      height: 100%;
-      opacity: .5; }
-      html #content .tall-con .tall:hover {
-        cursor: pointer;
-        opacity: 1;
-        transition: opacity .5s; }
+  html .none {
+    display: none; }
   html .modal {
     position: fixed;
     display: none;
@@ -118,3 +168,25 @@ html {
     background: #f5f5f5;
     opacity: .75;
     z-index: 500; }
+  html #content .short-con {
+    height: 100px;
+    padding: 0 10px 10px 0; }
+    html #content .short-con .short {
+      background: #f9f9f9;
+      height: 100%;
+      opacity: .5; }
+      html #content .short-con .short:hover {
+        cursor: pointer;
+        opacity: 1;
+        transition: opacity .5s; }
+  html #content .tall-con {
+    height: 400px;
+    padding: 0 10px 10px 0; }
+    html #content .tall-con .tall {
+      background: #f9f9f9;
+      height: 100%;
+      opacity: .5; }
+      html #content .tall-con .tall:hover {
+        cursor: pointer;
+        opacity: 1;
+        transition: opacity .5s; }

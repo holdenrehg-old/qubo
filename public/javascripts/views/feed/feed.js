@@ -1,10 +1,36 @@
-module.exports = Backbone.View.extend({
+(function(Base, Sidenav) {
 
-    initialize: function() {
-    	this.render();
-    },
+    module.exports = Base.extend({
 
-    render: function() {
-    	this.$el.html('feed');
-    }
-});
+        headerTemplate: undefined,
+        sidenavTemplate: undefined,
+
+        /**
+         * @override
+         */
+        setup: function() {
+            this.headerTemplate = require('../general/template/header.hbs');
+            this.$el.addClass('withsidenav');
+        },
+
+        /**
+         * @override
+         */
+        render: function() {
+            this.$header.html(this.headerTemplate({
+                title: 'recent'
+            }));
+            this.$main.html('');
+            if(!this.$sidenav.html().length) {
+                new Sidenav({
+                    el: this.$sidenav,
+                    username: this.currentUser.get('username')
+                });
+            }
+        }
+    });
+})(
+    require('../general/base.js'),
+    require('../general/sidenav/sidenav.js')
+);
+

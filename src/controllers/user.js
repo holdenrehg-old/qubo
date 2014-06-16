@@ -6,14 +6,21 @@
 
             get: function(req, res, next) {
                 var people = req.db.get('user');
-                people.find({}, {}, function(e, docs) {
+                people.find({}, {}, function(err, docs) {
                     res.send(docs);
                 });
             },
 
             getUser: function(req, res, next) {
-                res.send({
-                    status: 'todo'
+                var people = req.db.get('user');
+                people.find({username: req.param('username')}, {}, function(err, docs) {
+                    if(err) {
+                        res.status(404);
+                        res.send();
+                    } else {
+                        res.status(200);
+                        res.send(docs[0]);
+                    }
                 });
             },
 

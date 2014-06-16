@@ -11,7 +11,7 @@
                 "verb": "delete"
             },
             "getUser": {
-                "url": "/:id",
+                "url": "/:username",
                 "verb": "get"
             }
         }
@@ -56,10 +56,7 @@
         "routes": {
             "get": true,
             "post": true,
-            "delete": {
-                "url": "/:token",
-                "verb": "delete"
-            }
+            "delete": true
         }
     }
 }
