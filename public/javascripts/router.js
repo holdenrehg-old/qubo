@@ -5,11 +5,14 @@
         HomeView: require('./views/home/home.js'),
         FeedView: require('./views/feed/feed.js'),
         ProfileView: require('./views/profile/profile.js'),
+        ExploreView: require('./views/explore/explore.js'),
+        SettingsView: require('./views/settings/settings.js'),
         NotFoundView: require('./views/notFound.js'),
 
         routes: {
             '': 'index',
             'feed(/)': 'feed',
+            'explore(/)': 'explore',
             'settings(/)': 'settings',
             'logout(/)': 'logout',
             ':username(/)': 'profile',
@@ -30,19 +33,31 @@
             });
         },
 
-        feed: function(args, user) {
+        feed: function(args, currentUser) {
             new this.FeedView({
                 el: $('body'),
                 dom: this.getDOM(),
-                currentUser: user
+                currentUser: currentUser
             });
         },
 
-        settings: function() {
-            $('body').html('<h3>settings</h3>');
+        explore: function(args, currentUser) {
+            new this.ExploreView({
+                el: $('body'),
+                dom: this.getDOM(),
+                currentUser: currentUser
+            });
         },
 
-        profile: function(username) {
+        settings: function(args, currentUser) {
+            new this.SettingsView({
+                el: $('body'),
+                dom: this.getDOM(),
+                currentUser: currentUser
+            });
+        },
+
+        profile: function(username, args, currentUser) {
             var user = new User({
                 id: username
             }),
@@ -50,10 +65,12 @@
             user.fetch({
 
                 success: function(user) {
+                    console.log(user);
                     new self.ProfileView({
                         el: $('body'),
                         dom: self.getDOM(),
-                        user: user
+                        user: user,
+                        currentUser: currentUser
                     });
                 },
 

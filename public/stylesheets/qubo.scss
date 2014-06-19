@@ -5,10 +5,9 @@ VARS
 /**********/
  $qubo-red: rgb(194, 85, 85);
  $dark-red: rgb(184, 64, 64);
- $darker-red: #631515;
  $white: #ffffff;
  $light-grey: #f9f9f9;
- $mid-grey: #BDBDBD;
+ $mid-grey: #bdbdbd;
  $dark-grey: #666666;
  html {
     font-family: sans-serif;
@@ -19,8 +18,8 @@ VARS
     RESET
 
     **********/
-    body, p, h1, h2, h3, h4, h5, h6 {
-        padding: 0px;
+    body, main, div, p, h1, h2, h3, h4, h5, h6 {
+        padding: 0;
         margin: 0;
     }
     /********** 
@@ -38,13 +37,22 @@ VARS
         padding: 25px;
     }
     body {
-        padding: 0 10px 10px 10px;
         &.withsidenav {
-            padding-left: 80px;
+            padding-left: 70px;
         }
     }
     main {
-        padding: 25px;
+    }
+    .full-width {
+        max-width: 1440px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .med-width {
+        max-width: 1440px;
+        padding: 0 12%;
+        margin-left: auto;
+        margin-right: auto;
     }
     /********** 
 
@@ -64,6 +72,8 @@ VARS
         font-size: 25px;
     }
     h4 {
+        font-weight: 100;
+        font-size: 15px;
     }
     h5 {
     }
@@ -77,13 +87,19 @@ VARS
         color: $qubo-red;
     }
     .fa {
-        font-size: 22px;
+        font-size: 20px;
+        &:hover {
+            cursor: pointer;
+        }
     }
     .fancy {
         font-family:'Lobster';
     }
     .hide {
         visibility: hidden;
+    }
+    .red {
+        color: $qubo-red;
     }
     /********** 
 
@@ -103,6 +119,7 @@ VARS
         cursor: pointer;
         font-family: sans-serif;
         font-weight: 100;
+        width: 100%;
         &.white {
             background: $white;
             border: 2px solid $qubo-red;
@@ -123,13 +140,13 @@ VARS
             }
         }
         &.small {
-            height: 30px;
+            height: 25px;
+            width: auto;
             font-size: 12px;
         }
         &#signin, &#register {
             display: inline-block;
             margin: 0 0 10px 0;
-            width: 100%;
         }
     }
     form {
@@ -175,7 +192,7 @@ VARS
             width: 70px;
             background: $qubo-red;
             * {
-                color: $white;    
+                color: $white;
             }
             li {
                 text-align: center;
@@ -249,6 +266,60 @@ VARS
             padding: 0 10px 10px 0;
             .tall {
                 @include container();
+            }
+        }
+    }
+    /**********
+
+    PROFILE
+
+    *********/
+    #cover-image {
+        min-height: 250px;
+        position: relative;
+        z-index: 50;
+        border-bottom: 5px solid $light-grey;
+        text-align: center;
+    }
+    #profile-info {
+        width: 100%;
+        background: transparent;
+        text-align: center;
+        & > * {
+            margin: 5px 0;
+        }
+    }
+    #profile-image {
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        border: 5px solid $light-grey;
+    }
+    /**********
+
+    EXPLORE
+
+    *********/
+    .category {
+        padding: 10px;
+        img {
+            width: 100%;
+            opacity: 0.5;
+            &:hover {
+                cursor: pointer;
+                opacity: 1;
+                transition: opacity .5s;
+            }
+        }
+    }
+    #controls {
+        color: $qubo-red;
+        i {
+            font-size: 14px;
+            padding: 0 8px;
+            &:hover {
+                color: $dark-red;
+                cursor: pointer;
             }
         }
     }

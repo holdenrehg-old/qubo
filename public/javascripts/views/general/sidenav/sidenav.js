@@ -27,9 +27,9 @@
 		events: {
 			'click #sidenav-user': 'showProfile',
 			'click #sidenav-feed': 'showFeed',
-			'click #sidenav-explore': 'showExplore'
+			'click #sidenav-explore': 'showExplore',
 			'click #sidenav-settings': 'showSettings',
-			'click #sidenav-logout': 'showLogout',
+			'click #sidenav-logout': 'showLogout'
 		},
 
 		/**
@@ -50,8 +50,8 @@
 		 *
 		 */
 		showExplore: function() {
-			// explore
-		}
+			App.navigate('explore', true);
+		},
 
 		/**
 		 *

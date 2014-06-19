@@ -31,9 +31,19 @@ html {
 
     HOME SCREEN 
 
-    **********/ }
-  html body, html p, html h1, html h2, html h3, html h4, html h5, html h6 {
-    padding: 0px;
+    **********/
+    /**********
+
+    PROFILE
+
+    *********/
+    /**********
+
+    EXPLORE
+
+    *********/ }
+  html body, html main, html div, html p, html h1, html h2, html h3, html h4, html h5, html h6 {
+    padding: 0;
     margin: 0; }
   html .pure-g > div {
     -webkit-box-sizing: border-box;
@@ -42,12 +52,17 @@ html {
   html header {
     text-align: center;
     padding: 25px; }
-  html body {
-    padding: 0 10px 10px 10px; }
-    html body.withsidenav {
-      padding-left: 80px; }
-  html main {
-    padding: 25px; }
+  html body.withsidenav {
+    padding-left: 70px; }
+  html .full-width {
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto; }
+  html .med-width {
+    max-width: 1440px;
+    padding: 0 12%;
+    margin-left: auto;
+    margin-right: auto; }
   html p {
     font-size: 9px; }
   html h2 {
@@ -55,17 +70,24 @@ html {
   html h3 {
     font-weight: 100;
     font-size: 25px; }
+  html h4 {
+    font-weight: 100;
+    font-size: 15px; }
   html a {
     text-decoration: none;
     color: #c25555; }
   html #title {
     color: #c25555; }
   html .fa {
-    font-size: 22px; }
+    font-size: 20px; }
+    html .fa:hover {
+      cursor: pointer; }
   html .fancy {
     font-family: 'Lobster'; }
   html .hide {
     visibility: hidden; }
+  html .red {
+    color: #c25555; }
   html ul {
     list-style-type: none;
     padding: 0;
@@ -77,7 +99,8 @@ html {
     border-radius: 2px;
     cursor: pointer;
     font-family: sans-serif;
-    font-weight: 100; }
+    font-weight: 100;
+    width: 100%; }
     html button.white, html input[type="submit"].white {
       background: white;
       border: 2px solid #c25555;
@@ -94,12 +117,12 @@ html {
         color: #f9f9f9;
         transition: background .5s; }
     html button.small, html input[type="submit"].small {
-      height: 30px;
+      height: 25px;
+      width: auto;
       font-size: 12px; }
     html button#signin, html button#register, html input[type="submit"]#signin, html input[type="submit"]#register {
       display: inline-block;
-      margin: 0 0 10px 0;
-      width: 100%; }
+      margin: 0 0 10px 0; }
   html form label {
     display: inline-block;
     min-width: 150px; }
@@ -190,3 +213,37 @@ html {
         cursor: pointer;
         opacity: 1;
         transition: opacity .5s; }
+  html #cover-image {
+    min-height: 250px;
+    position: relative;
+    z-index: 50;
+    border-bottom: 5px solid #f9f9f9;
+    text-align: center; }
+  html #profile-info {
+    width: 100%;
+    background: transparent;
+    text-align: center; }
+    html #profile-info > * {
+      margin: 5px 0; }
+  html #profile-image {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 5px solid #f9f9f9; }
+  html .category {
+    padding: 10px; }
+    html .category img {
+      width: 100%;
+      opacity: 0.5; }
+      html .category img:hover {
+        cursor: pointer;
+        opacity: 1;
+        transition: opacity .5s; }
+  html #controls {
+    color: #c25555; }
+    html #controls i {
+      font-size: 14px;
+      padding: 0 8px; }
+      html #controls i:hover {
+        color: #b84040;
+        cursor: pointer; }

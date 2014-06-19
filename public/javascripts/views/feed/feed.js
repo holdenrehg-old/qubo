@@ -10,7 +10,7 @@
          */
         setup: function() {
             this.headerTemplate = require('../general/template/header.hbs');
-            this.$el.addClass('withsidenav');
+            this.useSidenav();
         },
 
         /**
@@ -20,7 +20,9 @@
             this.$header.html(this.headerTemplate({
                 title: 'recent'
             }));
+            
             this.$main.html('');
+
             if(!this.$sidenav.html().length) {
                 new Sidenav({
                     el: this.$sidenav,

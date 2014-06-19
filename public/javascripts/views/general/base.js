@@ -52,6 +52,13 @@
 	    	_.each($arr, function($el) {
 	    		$el.removeClass('none');
 	    	});
+	    },
+
+	    useSidenav: function() {
+	    	var $body = $('body');
+	    	if(!$body.hasClass('withsidenav')) {
+	    		$body.addClass('withsidenav');
+	    	}
 	    }
 	});
 })(
