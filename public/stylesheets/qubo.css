@@ -41,6 +41,11 @@ html {
 
     EXPLORE
 
+    *********/
+    /**********
+
+    EXPLORE
+
     *********/ }
   html body, html main, html div, html p, html h1, html h2, html h3, html h4, html h5, html h6 {
     padding: 0;
@@ -49,7 +54,7 @@ html {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
-  html header {
+  html header, html .header {
     text-align: center;
     padding: 25px; }
   html body.withsidenav {
@@ -73,11 +78,17 @@ html {
   html h4 {
     font-weight: 100;
     font-size: 15px; }
+  html h5 {
+    font-weight: 600;
+    font-size: 13px; }
+  html h6 {
+    font-weight: 100;
+    font-size: 12px; }
   html a {
     text-decoration: none;
-    color: #c25555; }
+    color: #b52a2a; }
   html #title {
-    color: #c25555; }
+    color: #b52a2a; }
   html .fa {
     font-size: 20px; }
     html .fa:hover {
@@ -87,7 +98,12 @@ html {
   html .hide {
     visibility: hidden; }
   html .red {
-    color: #c25555; }
+    color: #b52a2a; }
+  html .link {
+    color: #b52a2a; }
+    html .link:hover {
+      cursor: pointer;
+      color: #b84040; }
   html ul {
     list-style-type: none;
     padding: 0;
@@ -103,15 +119,15 @@ html {
     width: 100%; }
     html button.white, html input[type="submit"].white {
       background: white;
-      border: 2px solid #c25555;
-      color: #c25555; }
+      border: 2px solid #b52a2a;
+      color: #b52a2a; }
       html button.white:hover, html input[type="submit"].white:hover {
-        background: #c25555;
+        background: #b52a2a;
         color: white;
         transition: background .5s; }
     html button.red, html input[type="submit"].red {
-      background: #c25555;
-      border: 2px solid #c25555;
+      background: #b52a2a;
+      border: 2px solid #b52a2a;
       color: white; }
       html button.red:hover, html input[type="submit"].red:hover {
         color: #f9f9f9;
@@ -135,7 +151,7 @@ html {
     width: 100%;
     padding: 10px 0 10px 0; }
   html form .error {
-    background: #c25555;
+    background: #b52a2a;
     opacity: .5;
     color: white;
     transition: background .3s linear; }
@@ -154,7 +170,7 @@ html {
     left: 0px;
     height: 100%;
     width: 70px;
-    background: #c25555; }
+    background: #b52a2a; }
     html aside#sidenav * {
       color: white; }
     html aside#sidenav li {
@@ -191,6 +207,10 @@ html {
     background: #f5f5f5;
     opacity: .75;
     z-index: 500; }
+  html .center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto; }
   html #content .short-con {
     height: 100px;
     padding: 0 10px 10px 0; }
@@ -214,22 +234,48 @@ html {
         opacity: 1;
         transition: opacity .5s; }
   html #cover-image {
-    min-height: 250px;
     position: relative;
     z-index: 50;
-    border-bottom: 5px solid #f9f9f9;
-    text-align: center; }
+    min-height: 350px;
+    text-align: center;
+    background: url(https://static.licdn.com/scds/common/u/images/apps/profile/topcard_backgrounds/texture_desktop_1400x425.jpg);
+    background-size: cover; }
   html #profile-info {
-    width: 100%;
-    background: transparent;
-    text-align: center; }
+    width: 225px;
+    background: rgba(255, 255, 255, 0.95);
+    text-align: center;
+    padding: 10px;
+    margin-top: 100px; }
     html #profile-info > * {
       margin: 5px 0; }
   html #profile-image {
     height: 100px;
     width: 100px;
     border-radius: 50%;
-    border: 5px solid #f9f9f9; }
+    border: 4px solid #666666; }
+  html .circle-list {
+    padding: 40px;
+    border-bottom: 5px solid #f9f9f9; }
+    html .circle-list .list-title {
+      font-size: 30px;
+      text-align: center;
+      width: 225px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 25px 0; }
+  html .todo-item {
+    background: #eee;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    background: url(http://p1.pichost.me/640/41/1641233.jpg);
+    margin-left: auto;
+    margin-right: auto;
+    background-size: 140%; }
+    html .todo-item:hover {
+      cursor: pointer; }
+  html .graph {
+    height: 100px; }
   html .category {
     padding: 10px; }
     html .category img {
@@ -240,10 +286,55 @@ html {
         opacity: 1;
         transition: opacity .5s; }
   html #controls {
-    color: #c25555; }
+    color: #b52a2a; }
     html #controls i {
       font-size: 14px;
       padding: 0 8px; }
       html #controls i:hover {
         color: #b84040;
         cursor: pointer; }
+  html #search {
+    width: 50%;
+    padding: 5px;
+    background: white;
+    border: 2px solid #bdbdbd;
+    color: #666666;
+    border-radius: 15px;
+    text-align: center; }
+  html #search-results {
+    padding: 10px; }
+  html #feed {
+    width: 500px;
+    padding: 60px 0 0 0; }
+    html #feed .feed-item {
+      padding: 0 0 60px 0; }
+      html #feed .feed-item .post-image {
+        height: 300px;
+        background: #f9f9f9;
+        border: 0; }
+      html #feed .feed-item .profile-image {
+        height: 60px;
+        background: #f9f9f9;
+        width: 60px;
+        float: left;
+        margin: 5px 5px 5px 0;
+        border: 0; }
+      html #feed .feed-item .post-info {
+        float: left;
+        width: 200px;
+        margin: 5px 0 0 10px;
+        text-align: left; }
+        html #feed .feed-item .post-info .time, html #feed .feed-item .post-info .name {
+          color: #bdbdbd; }
+          html #feed .feed-item .post-info .time .fa, html #feed .feed-item .post-info .name .fa {
+            font-size: 12px; }
+        html #feed .feed-item .post-info * {
+          margin: 2px 0; }
+      html #feed .feed-item .type {
+        float: right;
+        font-size: 40px;
+        margin: 5px 0 0 0; }
+      html #feed .feed-item .content {
+        text-align: left; }
+        html #feed .feed-item .content p {
+          font-size: 14px; }

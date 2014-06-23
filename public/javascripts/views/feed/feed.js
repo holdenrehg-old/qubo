@@ -3,13 +3,14 @@
     module.exports = Base.extend({
 
         headerTemplate: undefined,
-        sidenavTemplate: undefined,
+        mainTemplate: undefined,
 
         /**
          * @override
          */
         setup: function() {
             this.headerTemplate = require('../general/template/header.hbs');
+            this.mainTemplate = require('./template/main.hbs');
             this.useSidenav();
         },
 
@@ -21,7 +22,7 @@
                 title: 'recent'
             }));
             
-            this.$main.html('');
+            this.$main.html(this.mainTemplate());
 
             if(!this.$sidenav.html().length) {
                 new Sidenav({

@@ -3,12 +3,12 @@
 VARS 
 
 /**********/
- $qubo-red: rgb(194, 85, 85);
+ $qubo-red: rgb(181, 42, 42);
  $dark-red: rgb(184, 64, 64);
  $white: #ffffff;
  $light-grey: #f9f9f9;
  $mid-grey: #bdbdbd;
- $dark-grey: #666666;
+ $dark-grey: #666;
  html {
     font-family: sans-serif;
     font-weight: 100;
@@ -32,7 +32,7 @@ VARS
         -moz-box-sizing: border-box;
         box-sizing: border-box;
     }
-    header {
+    header, .header {
         text-align: center;
         padding: 25px;
     }
@@ -76,8 +76,12 @@ VARS
         font-size: 15px;
     }
     h5 {
+        font-weight: 600;
+        font-size: 13px;
     }
     h6 {
+        font-weight: 100;
+        font-size: 12px;
     }
     a {
         text-decoration: none;
@@ -100,6 +104,13 @@ VARS
     }
     .red {
         color: $qubo-red;
+    }
+    .link {
+        color: $qubo-red;
+        &:hover {
+            cursor: pointer;
+            color: $dark-red;
+        }
     }
     /********** 
 
@@ -238,6 +249,11 @@ VARS
         opacity: .75;
         z-index: 500;
     }
+    .center {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
     /********** 
 
     HOME SCREEN 
@@ -275,16 +291,19 @@ VARS
 
     *********/
     #cover-image {
-        min-height: 250px;
         position: relative;
         z-index: 50;
-        border-bottom: 5px solid $light-grey;
+        min-height: 350px;
         text-align: center;
+        background: url(https://static.licdn.com/scds/common/u/images/apps/profile/topcard_backgrounds/texture_desktop_1400x425.jpg);
+        background-size: cover;
     }
     #profile-info {
-        width: 100%;
-        background: transparent;
+        width: 225px;
+        background: rgba(255, 255, 255, .95);
         text-align: center;
+        padding: 10px;
+        margin-top: 100px;
         & > * {
             margin: 5px 0;
         }
@@ -293,7 +312,35 @@ VARS
         height: 100px;
         width: 100px;
         border-radius: 50%;
-        border: 5px solid $light-grey;
+        border: 4px solid $dark-grey;
+    }
+    .circle-list {
+        padding: 40px;
+        border-bottom: 5px solid $light-grey;
+        .list-title {
+            font-size: 30px;
+            text-align: center;
+            width: 225px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 25px 0;
+        }
+    }
+    .todo-item {
+        background: #eee;
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        background: url(http://p1.pichost.me/640/41/1641233.jpg);
+        margin-left: auto;
+        margin-right: auto;
+        background-size: 140%;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .graph {
+        height: 100px;
     }
     /**********
 
@@ -320,6 +367,69 @@ VARS
             &:hover {
                 color: $dark-red;
                 cursor: pointer;
+            }
+        }
+    }
+    #search {
+        width: 50%;
+        padding: 5px;
+        background: $white;
+        border: 2px solid $mid-grey;
+        color: $dark-grey;
+        border-radius: 15px;
+        text-align: center;
+    }
+    #search-results {
+        padding: 10px;
+    }
+    /**********
+
+    EXPLORE
+
+    *********/
+    #feed {
+        width: 500px;
+        padding: 60px 0 0 0;
+        .feed-item {
+            padding: 0 0 60px 0;
+            .post-image {
+                height: 300px;
+                background: $light-grey;
+                border: 0;
+            }
+            .profile-image {
+                height: 60px;
+                background: $light-grey;
+                width: 60px;
+                float: left;
+                margin: 5px 5px 5px 0;
+                border: 0;
+            }
+            .post-info {
+                float: left;
+                width: 200px;
+                margin: 5px 0 0 10px;
+                text-align: left;
+                .time, .name {
+                    color: $mid-grey;
+                    .fa {
+                        font-size: 12px;
+                    }
+                }
+                * {
+                    margin: 2px 0;
+                }
+            }
+            .type {
+                float: right;
+                font-size: 40px;
+                margin: 5px 0 0 0;
+            }
+            .content {
+                text-align: left;
+                p {
+                    font-size: 14px;
+                }
             }
         }
     }
