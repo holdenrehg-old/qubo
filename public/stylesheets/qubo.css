@@ -321,11 +321,11 @@ html {
         border: 0; }
       html #feed .feed-item .post-info {
         float: left;
-        width: 200px;
+        width: 350px;
         margin: 5px 0 0 10px;
         text-align: left; }
         html #feed .feed-item .post-info .time, html #feed .feed-item .post-info .name {
-          color: #bdbdbd; }
+          color: rgba(217, 113, 113, 0.8); }
           html #feed .feed-item .post-info .time .fa, html #feed .feed-item .post-info .name .fa {
             font-size: 12px; }
         html #feed .feed-item .post-info * {
@@ -338,3 +338,10 @@ html {
         text-align: left; }
         html #feed .feed-item .content p {
           font-size: 14px; }
+      html #feed .feed-item .comments {
+        padding: 10px 0 0 50px; }
+        html #feed .feed-item .comments .comment {
+          font-size: 12px; }
+        html #feed .feed-item .comments .profile-image {
+          height: 50px;
+          width: 50px; }

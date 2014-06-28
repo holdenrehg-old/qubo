@@ -3,6 +3,7 @@
 VARS 
 
 /**********/
+ $qubo-light: rgba(217, 113, 113, .8);
  $qubo-red: rgb(181, 42, 42);
  $dark-red: rgb(184, 64, 64);
  $white: #ffffff;
@@ -407,11 +408,11 @@ VARS
             }
             .post-info {
                 float: left;
-                width: 200px;
+                width: 350px;
                 margin: 5px 0 0 10px;
                 text-align: left;
                 .time, .name {
-                    color: $mid-grey;
+                    color: $qubo-light;
                     .fa {
                         font-size: 12px;
                     }
@@ -429,6 +430,16 @@ VARS
                 text-align: left;
                 p {
                     font-size: 14px;
+                }
+            }
+            .comments {
+                padding: 10px 0 0 50px;
+                .comment {
+                    font-size: 12px;
+                }
+                .profile-image {
+                    height: 50px;
+                    width: 50px;
                 }
             }
         }
